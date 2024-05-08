@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "448003957762",
+    "project_id": "damv-2024a-sw-gr2",
+    "storage_bucket": "damv-2024a-sw-gr2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448003957762:android:cc94a8447e13d5213fb31b",
+        "android_client_info": {
+          "package_name": "com.example.a2024aswgr2damv"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoPHBQPhd_c6Akb8YTfWit5djRWsDyTYU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
