@@ -1,15 +1,15 @@
 import java.util.*
 import java.util.function.IntConsumer
 
-fun main(){
+fun main() {
     println("Hola mundo")
     // Inmutables (No se pueden re asignar "=")
     val inmutable: String = "Daniel"
     //inmutable = "Mera" // ERROR!
 
     // Mutables
-    var mutable: String = "Daniel"
-    mutable = "Mera" // OK
+//    var mutable: String = "Daniel"
+//    mutable = "Mera" // OK
 
     // val > var
 
@@ -22,21 +22,23 @@ fun main(){
     // Variables primitivas
     val nombre: String = "Daniel"
     val sueldo: Double = 1.2
-     val estadoCivil: Char = 'S'
+    val estadoCivil: Char = 'S'
     val mayorEdad: Boolean = true
     // clases en Java
     val fechaNacimiento: Date = Date()
 
     // When (Switch)
     val estadoCivilWhen = "C"
-    when (estadoCivilWhen){
-        ("C") ->{
+    when (estadoCivilWhen) {
+        ("C") -> {
             println("Casado")
         }
+
         "S" -> {
             println("Soltero")
         }
-        else ->{
+
+        else -> {
             println("No sabemos")
         }
     }
@@ -50,6 +52,55 @@ fun main(){
     // calcularSueldo (sueldo, tasa, bonoEspecial)
     calcularSueldo(10.00, bonoEspecial = 20.00)
     calcularSueldo(bonoEspecial = 20.00, sueldo = 10.00, tasa = 14.00)
+
+    // Uso de clases
+    val sumaUno = Suma(1, 1) // new Suma(1,1) en Kotlin no hay "new"
+    val sumaDos = Suma(null, 1)
+    val sumaTres = Suma(1, null)
+    val sumaCuatro = Suma(null, null)
+    sumaUno.sumar()
+    sumaDos.sumar()
+    sumaTres.sumar()
+    sumaCuatro.sumar()
+    println(Suma.pi)
+    println(Suma.elevarAlCuadrado(2))
+    println(Suma.historialSumas)
+
+
+    // Arreglos
+    // Estaticos
+    val arrergloEstatico: Array<Int> = arrayOf<Int>(1, 2, 3)
+    println(arrergloEstatico)
+    // Dinamicos
+    val arregloDinamico: ArrayList<Int> = arrayList<Int>(
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+    )
+
+    println(arregloDinamico)
+    arregloDinamico.add(11)
+    arregloDinamico.add(12)
+    println(arregloDinamico)
+
+    // Operadores
+    // For each => Unit
+    val respuestaForEach: Unit = arregloDinamico
+        .foreach { valorActual: Int -> // ->
+            print("Valor Actual: ${valorActual}")
+        }
+    // "it" (en ingles "eso") significa el elemento iterado
+    arregloDinamico.forEach { print("Valor Actual (it): ${it}") }
+
+    // Map -> Muta(Modifica cambia) el arreglo
+    // 1) Enviamos el nuevo valor de la iteracion
+    // 2) Nos devuelve un NUEVO ARREGLO con valores
+    // de las iteraciones
+    val respuestaMap: List<Double> = arregloDinamico
+        .map{ valorActual: Int ->
+            return@map valorActual.toDouble() + 100.00
+        }
+    println(respuestaMap)
+    val respustaMap = arregloDinamico.map{it + 15}
+    println(respustaMap)
 
 }
 
@@ -124,6 +175,30 @@ class Suma (
         soyPublicoImplicito // this. Opcional (propiedades, metodos)
     }
 
+    constructor ( //Constructor segundario
+        uno:Int?,
+        dos:Int
+    ):this(
+        if(uno=null) 0 else uno,
+        dos
+    )
+
+    constructor(// Constructor tercero
+        uno:Int,
+        dos:Int?
+    ):this(
+        uno,
+        if(dos=null) 0 else dos
+    )
+
+    constructor( // Constructor cuarto
+        uno:Int?,
+        dos:Int?
+    ):this(
+        if(uno=null) 0 else uno,
+        if(dos=null) 0 else dos
+    )
+
     // public fun sumar():Int (Modificador "puclic" es opcional)
     fun Sumar():Int{
         val total = numeroUno + numeroDos
@@ -141,5 +216,7 @@ class Suma (
             historialSumas.add(valorTotalSuma)
         }
     }
+
+
 }
 
