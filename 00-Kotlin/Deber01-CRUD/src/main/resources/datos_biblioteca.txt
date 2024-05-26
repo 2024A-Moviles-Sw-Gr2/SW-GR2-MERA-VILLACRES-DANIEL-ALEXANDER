@@ -1,0 +1,13 @@
+
+Antes de la eliminacion
+Nombre: Biblioteca Central 	 Ubicación: Calle Principal 123 	 Fecha de Creación: 26/05/2024 	 Presupuesto Anual: 50000.0 	 Es Pública: true
+Listado de libros:
+ID: 1 	 Título: 1984 (Actualizado) 	 Autor: George Orwell 	 Año publicación: 1949 	 Precio: 18.99 	 Disponible: true
+ID: 2 	 Título: Cien Años de Soledad 	 Autor: Gabriel García Márquez 	 Año publicación: 1967 	 Precio: 25.99 	 Disponible: true
+
+Despues de eliminar libros y actualizar biblioteca
+Nombre: Biblioteca Central 	 Ubicación: Avenida Principal 456 	 Fecha de Creación: 26/05/2024 	 Presupuesto Anual: 60000.0 	 Es Pública: true
+Listado de libros:
+ID: 1 	 Título: 1984 (Actualizado) 	 Autor: George Orwell 	 Año publicación: 1949 	 Precio: 18.99 	 Disponible: true
+
+Despues de eliminar biblioteca
