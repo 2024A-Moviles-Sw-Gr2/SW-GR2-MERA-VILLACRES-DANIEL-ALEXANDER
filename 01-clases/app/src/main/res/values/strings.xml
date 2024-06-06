@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">2024ASWGR2DAMV</string>
     <string name="saludo">Hello world</string>
+    <color name="textColor">#00FF00</color>
 </resources>
