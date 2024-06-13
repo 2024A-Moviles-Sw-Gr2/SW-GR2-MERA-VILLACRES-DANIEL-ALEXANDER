@@ -52,4 +52,21 @@ class ACicloVida : AppCompatActivity() {
         super.onDestroy()
         mostrarSnackbar("OnDestroy")
     }
+
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.run{
+            putString("variableTextoGuardado", textoGlobal)
+        }
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val textoRecuperadoDeVariable: String? = savedInstanceState.getString("variableTextoGuardado")
+        if(textoRecuperadoDeVariable != null){
+            mostrarSnackbar(textoRecuperadoDeVariable)
+            textoGlobal = textoRecuperadoDeVariable
+        }
+    }
 }

@@ -2,4 +2,5 @@
 <resources>
     <string name="saludo">This is the condition 1</string>
     <color name="textColor">#00FF00</color>
+    <color name="textColor2">#00FF00</color>
 </resources>
