@@ -2,4 +2,11 @@
     <string name="app_name">2024ASWGR2DAMV</string>
     <string name="saludo">Hello world</string>
     <color name="textColor">#00FF00</color>
+
+    <string-array name="string_array_opciones">
+        <item>Lunes</item>
+        <item>Martes</item>
+        <item>Miercoles</item>
+    </string-array>
+
 </resources>
