@@ -1,11 +1,13 @@
 package com.example.a2024aswgr2damv
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ContextMenu
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.snackbar.Snackbar
 
 class BListView : AppCompatActivity() {
@@ -65,7 +67,37 @@ class BListView : AppCompatActivity() {
         }
     }
 
-    fun abrirDialogo(){}
+    fun abrirDialogo(){
+
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Desea Eliminar?")
+        builder.setPositiveButton(
+            "Aceptar",
+            DialogInterface.OnClickListener{
+                dialog, which ->
+                mostrarSnackbar("Acepto $which")
+            }
+        )
+        builder.setNegativeButton("Cancelar", null)
+        val opciones = resources.getStringArray(
+            R.array.string_array_opciones
+        )
+        val seleccionPrevia = booleanArrayOf(
+            true, // Lunes
+            false, // Martes
+            false // Miercoles
+        )
+        builder.setMultiChoiceItems(
+            opciones,
+            seleccionPrevia,
+            {
+                dialog, which, isChecked ->
+                mostrarSnackbar("Item: $which")
+            }
+        )
+        val dialogo = builder.create()
+        dialogo.show()
+    }
 
     fun anadirEntrenador(
         adaptador: ArrayAdapter<BEntrenador>
@@ -77,7 +109,7 @@ class BListView : AppCompatActivity() {
     }
     fun mostrarSnackbar(texto:String){
         val snack = Snackbar.make(
-            findViewById(R.id.cl_ciclo_vida),
+            findViewById(R.id.cl_blist_view),
             texto,
             Snackbar.LENGTH_INDEFINITE
         )
