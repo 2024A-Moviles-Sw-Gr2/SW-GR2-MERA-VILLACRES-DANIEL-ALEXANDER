@@ -1,0 +1,4 @@
+1;1984;George Orwell;1949;19.99;true;Biblioteca Central
+2;Cien Años de Soledad;Gabriel García Márquez;1967;25.99;true;Biblioteca Central
+3;Don Quijote;Miguel de Cervantes;1605;15.99;true;Biblioteca Norte
+4;La Sombra del Viento;Carlos Ruiz Zafón;2001;18.5;true;Biblioteca Norte

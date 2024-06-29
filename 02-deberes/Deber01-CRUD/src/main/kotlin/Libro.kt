@@ -1,14 +1,15 @@
-data class Libro (
-    var id:Int,
-    var titulo:String,
-    var autor:String,
-    var anioPublicacion:Int,
+class Libro (
+    var id: Int,
+    var titulo: String,
+    var autor: String,
+    var anioPublicacion: Int,
     var precio: Double,
-    var disponible: Boolean
-){
+    var disponible: Boolean,
+    var bibliotecaNombre: String
+) {
     // Métodos CRUD para Libro
     companion object {
-        private val libros = mutableListOf<Libro>()
+        val libros = mutableListOf<Libro>()
 
         // Método Create
         fun agregarLibro(libro: Libro) {
@@ -22,7 +23,7 @@ data class Libro (
         }
 
         // Método Update
-        fun actualizarLibro(id: Int, libroActualizado: Libro){
+        fun actualizarLibro(id: Int, libroActualizado: Libro) {
             val index = libros.indexOfFirst { it.id == id }
             return if (index != -1) {
                 libros[index] = libroActualizado
@@ -33,11 +34,11 @@ data class Libro (
         }
 
         // Método Delete
-        fun eliminarLibro(id:Int){
-            libros.forEach{libroActual: Libro ->
-                if(libroActual.id == id){
+        fun eliminarLibro(id: Int) {
+            libros.forEach { libroActual ->
+                if (libroActual.id == id) {
                     libros.remove(libroActual)
-                    println("\nSe ha eliminado el libro con id: "+id)
+                    println("\nSe ha eliminado el libro con id: " + id)
                     return
                 }
             }
@@ -47,6 +48,10 @@ data class Libro (
         // Métodos extra
         fun listarLibros(): MutableList<Libro> {
             return libros
+        }
+
+        fun listarLibrosPorBiblioteca(bibliotecaNombre: String): List<Libro> {
+            return libros.filter { it.bibliotecaNombre.lowercase() == bibliotecaNombre.lowercase() }
         }
 
     }
