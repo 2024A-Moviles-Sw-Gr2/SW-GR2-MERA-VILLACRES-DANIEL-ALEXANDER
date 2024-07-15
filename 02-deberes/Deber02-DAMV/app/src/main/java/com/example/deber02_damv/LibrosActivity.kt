@@ -12,18 +12,19 @@ import android.widget.Button
 import android.widget.ListView
 import com.google.android.material.snackbar.Snackbar
 
-class MainActivity : AppCompatActivity() {
+class LibrosActivity : AppCompatActivity() {
 
     val arreglo = ArregloBiblioteca.arregloBibliotecas
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_libros)
 
-        val botonCrearBiblioteca = findViewById<Button>(R.id.btn_crear_biblioteca)
-        //botonCrearBiblioteca.setOnClickListener()
+        val botonCrearLibro = findViewById<Button>(R.id.btn_crear_libros)
+        //botonCrearLibro.setOnClickListener()
 
         // Manejo List view
-        val listView = findViewById<ListView>(R.id.lv_bibliotecas)
+        val listView = findViewById<ListView>(R.id.lv_libros)
         val adaptador = ArrayAdapter(
             this,
             android.R.layout.simple_list_item_1,
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreateContextMenu(menu,v,menuInfo)
         // llenamos opciones del menu
         val inflater = menuInflater
-        inflater.inflate(R.menu.menu_bibliotecas, menu)
+        inflater.inflate(R.menu.menu_libros, menu)
         // Obtener id
         val info = menuInfo as AdapterView.AdapterContextMenuInfo
         val posicion = info.position
@@ -53,19 +54,15 @@ class MainActivity : AppCompatActivity() {
         item: MenuItem
     ): Boolean {
         return when (item.itemId){
-            R.id.mi_editar_biblioteca -> {
+            R.id.mi_editar_libro -> {
                 mostrarSnackbar(
                     "Editar $posicionItemSeleccionado")
                 return true
             }
-            R.id.mi_eliminar_biblioteca -> {
+            R.id.mi_eliminar_libro -> {
                 mostrarSnackbar(
                     "Eliminar $posicionItemSeleccionado")
                 //abrirDialogo()// NUEVA LINEA
-                return true
-            }
-            R.id.mi_ver_biblioteca -> {
-                irActividad(LibrosActivity::class.java)
                 return true
             }
             else -> super.onContextItemSelected(item)
@@ -74,7 +71,7 @@ class MainActivity : AppCompatActivity() {
 
     fun mostrarSnackbar(texto:String){
         val snack = Snackbar.make(
-            findViewById(R.id.cl_main_bibliotecas),
+            findViewById(R.id.cl_libros),
             texto,
             Snackbar.LENGTH_INDEFINITE
         )
