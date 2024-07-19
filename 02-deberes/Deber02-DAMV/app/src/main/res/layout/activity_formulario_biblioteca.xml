@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FormularioBiblioteca">
+
+    <Button
+        android:id="@+id/btn_formulario_biblioteca"
+        android:layout_width="109dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="12dp"
+        android:text="Crear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ti_esPublica_biblioteca"
+        app:layout_constraintVertical_bias="0.474" />
+
+    <TextView
+        android:id="@+id/tv_formulario_biblioteca"
+        android:layout_width="385dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="28dp"
+        android:text="Actualizar Biblioteca"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.615"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/ti_nombre_biblioteca"
+        android:layout_width="316dp"
+        android:layout_height="56dp"
+        android:hint="Nombre"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.253" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/ti_ubicacion_biblioteca"
+        android:layout_width="316dp"
+        android:layout_height="56dp"
+        android:hint="Ubicación"
+        app:layout_constraintEnd_toEndOf="@+id/ti_nombre_biblioteca"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ti_nombre_biblioteca"
+        app:layout_constraintTop_toBottomOf="@+id/ti_nombre_biblioteca" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/ti_presupuesto_biblioteca"
+        android:layout_width="316dp"
+        android:layout_height="56dp"
+        android:hint="Presupuesto anual"
+        app:layout_constraintEnd_toEndOf="@+id/ti_fecha_biblioteca"
+        app:layout_constraintStart_toStartOf="@+id/ti_fecha_biblioteca"
+        app:layout_constraintTop_toBottomOf="@+id/ti_fecha_biblioteca" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/ti_esPublica_biblioteca"
+        android:layout_width="316dp"
+        android:layout_height="56dp"
+        android:hint="Es publica? si/no"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/ti_presupuesto_biblioteca"
+        app:layout_constraintStart_toStartOf="@+id/ti_presupuesto_biblioteca"
+        app:layout_constraintTop_toBottomOf="@+id/ti_presupuesto_biblioteca" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/ti_fecha_biblioteca"
+        android:layout_width="316dp"
+        android:layout_height="56dp"
+        android:hint="Fecha de creación - dd/mm/yyyy"
+        app:layout_constraintEnd_toEndOf="@+id/ti_ubicacion_biblioteca"
+        app:layout_constraintStart_toStartOf="@+id/ti_ubicacion_biblioteca"
+        app:layout_constraintTop_toBottomOf="@+id/ti_ubicacion_biblioteca" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

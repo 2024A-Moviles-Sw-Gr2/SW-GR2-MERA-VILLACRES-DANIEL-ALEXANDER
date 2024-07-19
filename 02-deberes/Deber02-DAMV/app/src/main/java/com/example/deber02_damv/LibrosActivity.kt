@@ -10,11 +10,12 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
+import com.example.deber02_damv.SQLite.BaseDeDatos
 import com.google.android.material.snackbar.Snackbar
 
 class LibrosActivity : AppCompatActivity() {
 
-    val arreglo = ArregloBiblioteca.arregloBibliotecas
+    val arreglo = BaseDeDatos.tablaLibro!!.consultarListaLibro()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

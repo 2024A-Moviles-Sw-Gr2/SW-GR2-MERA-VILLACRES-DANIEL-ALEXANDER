@@ -10,17 +10,20 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
+import com.example.deber02_damv.SQLite.BaseDeDatos
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
-    val arreglo = ArregloBiblioteca.arregloBibliotecas
+    val arreglo = BaseDeDatos.tablaBiblioteca!!.consultarListaBiblioteca()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val botonCrearBiblioteca = findViewById<Button>(R.id.btn_crear_biblioteca)
-        //botonCrearBiblioteca.setOnClickListener()
+        botonCrearBiblioteca.setOnClickListener {
+                irActividad(FormularioBiblioteca::class.java)
+            }
 
         // Manejo List view
         val listView = findViewById<ListView>(R.id.lv_bibliotecas)
@@ -54,14 +57,22 @@ class MainActivity : AppCompatActivity() {
     ): Boolean {
         return when (item.itemId){
             R.id.mi_editar_biblioteca -> {
-                mostrarSnackbar(
-                    "Editar $posicionItemSeleccionado")
+                irActividad(FormularioBiblioteca::class.java)
                 return true
             }
             R.id.mi_eliminar_biblioteca -> {
-                mostrarSnackbar(
-                    "Eliminar $posicionItemSeleccionado")
-                //abrirDialogo()// NUEVA LINEA
+                val listView = findViewById<ListView>(R.id.lv_bibliotecas)
+                val adaptador = ArrayAdapter(
+                    this,
+                    android.R.layout.simple_list_item_1,
+                    arreglo
+                )
+                val nombreBibliotecaSeleccionada = adaptador.getItem(posicionItemSeleccionado)!!.nombre
+                val id = BaseDeDatos.tablaBiblioteca!!.obtenerIDBiblioteca(nombreBibliotecaSeleccionada)
+                if (id != null) {
+                    BaseDeDatos.tablaBiblioteca!!.eliminarBiblioteca(id)
+                    mostrarSnackbar("Se eliminó la biblioteca: $nombreBibliotecaSeleccionada")
+                }
                 return true
             }
             R.id.mi_ver_biblioteca -> {
