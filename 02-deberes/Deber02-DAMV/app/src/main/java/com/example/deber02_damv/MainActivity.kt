@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         val botonCrearBiblioteca = findViewById<Button>(R.id.btn_crear_biblioteca)
         botonCrearBiblioteca.setOnClickListener {
-                irActividad(FormularioBiblioteca::class.java)
+                irActividad(FormularioBiblioteca("crear", -1)::class.java)
             }
 
         // Manejo List view
@@ -55,19 +55,20 @@ class MainActivity : AppCompatActivity() {
     override fun onContextItemSelected(
         item: MenuItem
     ): Boolean {
+        val listView = findViewById<ListView>(R.id.lv_bibliotecas)
+        val adaptador = ArrayAdapter(
+            this,
+            android.R.layout.simple_list_item_1,
+            arreglo
+        )
+        val nombreBibliotecaSeleccionada = adaptador.getItem(posicionItemSeleccionado)!!.nombre
         return when (item.itemId){
             R.id.mi_editar_biblioteca -> {
-                irActividad(FormularioBiblioteca::class.java)
+                val id = BaseDeDatos.tablaBiblioteca!!.obtenerIDBiblioteca(nombreBibliotecaSeleccionada)
+                if(id != null)irActividad(FormularioBiblioteca("actualizar", id)::class.java)
                 return true
             }
             R.id.mi_eliminar_biblioteca -> {
-                val listView = findViewById<ListView>(R.id.lv_bibliotecas)
-                val adaptador = ArrayAdapter(
-                    this,
-                    android.R.layout.simple_list_item_1,
-                    arreglo
-                )
-                val nombreBibliotecaSeleccionada = adaptador.getItem(posicionItemSeleccionado)!!.nombre
                 val id = BaseDeDatos.tablaBiblioteca!!.obtenerIDBiblioteca(nombreBibliotecaSeleccionada)
                 if (id != null) {
                     BaseDeDatos.tablaBiblioteca!!.eliminarBiblioteca(id)
@@ -76,7 +77,7 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
             R.id.mi_ver_biblioteca -> {
-                irActividad(LibrosActivity::class.java)
+                irActividad(LibrosActivity(nombreBibliotecaSeleccionada)::class.java)
                 return true
             }
             else -> super.onContextItemSelected(item)

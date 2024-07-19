@@ -7,75 +7,58 @@
     tools:context=".FormularioLibros">
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/ti_titulo_libro"
+        android:layout_width="316dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="108dp"
+        android:hint="Titulo"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/tv_formulario_libro"
+        app:layout_constraintStart_toStartOf="@+id/tv_formulario_libro"
+        app:layout_constraintTop_toBottomOf="@+id/tv_formulario_libro" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/ti_precio_libro"
+        android:layout_width="316dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="4dp"
+        android:hint="Precio"
+        app:layout_constraintEnd_toEndOf="@+id/ti_anio_libro"
+        app:layout_constraintStart_toStartOf="@+id/ti_anio_libro"
+        app:layout_constraintTop_toBottomOf="@+id/ti_anio_libro" />
+
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/ti_disponible_libro"
         android:layout_width="316dp"
         android:layout_height="56dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:hint="Esta disponible? si/no"
-        app:layout_constraintEnd_toEndOf="@id/ti_id_libro"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/ti_id_libro"
+        app:layout_constraintEnd_toEndOf="@+id/ti_precio_libro"
+        app:layout_constraintStart_toStartOf="@+id/ti_precio_libro"
         app:layout_constraintTop_toBottomOf="@+id/ti_precio_libro" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/ti_anio_libro"
         android:layout_width="316dp"
         android:layout_height="56dp"
-        android:layout_marginTop="8dp"
-        android:hint="Año de publicación"
-        app:layout_constraintEnd_toEndOf="@id/ti_id_libro"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/ti_id_libro"
-        app:layout_constraintTop_toBottomOf="@+id/ti_autor_libro" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/ti_precio_libro"
-        android:layout_width="316dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="8dp"
-        android:hint="Precio"
-        app:layout_constraintEnd_toEndOf="@id/ti_id_libro"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/ti_id_libro"
-        app:layout_constraintTop_toBottomOf="@+id/ti_anio_libro" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/ti_titulo_libro"
-        android:layout_width="316dp"
-        android:layout_height="56dp"
         android:layout_marginTop="12dp"
-        android:hint="Titulo"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@id/ti_id_libro"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/ti_id_libro"
-        app:layout_constraintTop_toBottomOf="@id/ti_id_libro" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/ti_id_libro"
-        android:layout_width="316dp"
-        android:layout_height="56dp"
-        android:hint="id"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.228" />
+        android:hint="Año de publicación"
+        app:layout_constraintEnd_toEndOf="@+id/ti_autor_libro"
+        app:layout_constraintStart_toStartOf="@+id/ti_autor_libro"
+        app:layout_constraintTop_toBottomOf="@+id/ti_autor_libro" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/ti_autor_libro"
         android:layout_width="316dp"
         android:layout_height="56dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:hint="Autor"
-        app:layout_constraintEnd_toEndOf="@id/ti_id_libro"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/ti_id_libro"
+        app:layout_constraintEnd_toEndOf="@+id/ti_titulo_libro"
+        app:layout_constraintStart_toStartOf="@+id/ti_titulo_libro"
         app:layout_constraintTop_toBottomOf="@+id/ti_titulo_libro" />
 
     <Button
-        android:id="@+id/btn_formulario_biblioteca2"
+        android:id="@+id/btn_formulario_libro"
         android:layout_width="109dp"
         android:layout_height="63dp"
         android:layout_marginStart="12dp"

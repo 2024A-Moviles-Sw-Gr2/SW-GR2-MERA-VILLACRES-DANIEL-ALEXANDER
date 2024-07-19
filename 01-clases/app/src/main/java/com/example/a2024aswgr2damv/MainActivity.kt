@@ -1,5 +1,6 @@
 package com.example.a2024aswgr2damv
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
@@ -63,6 +64,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -121,6 +123,11 @@ class MainActivity : AppCompatActivity() {
         val botonSqlite = findViewById<Button>(R.id.btn_sqlite)
         botonSqlite.setOnClickListener{
             irActividad(ECrudEntrenador::class.java)
+        }
+
+        val botonRView = findViewById<Button>(R.id.btn_recycler_view)
+        botonRView.setOnClickListener{
+            irActividad(FRecyclerView::class.java)
         }
 
     }

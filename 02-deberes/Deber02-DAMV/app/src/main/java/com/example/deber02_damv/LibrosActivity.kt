@@ -13,7 +13,7 @@ import android.widget.ListView
 import com.example.deber02_damv.SQLite.BaseDeDatos
 import com.google.android.material.snackbar.Snackbar
 
-class LibrosActivity : AppCompatActivity() {
+class LibrosActivity(val biblioteca:String) : AppCompatActivity() {
 
     val arreglo = BaseDeDatos.tablaLibro!!.consultarListaLibro()
 
@@ -22,7 +22,9 @@ class LibrosActivity : AppCompatActivity() {
         setContentView(R.layout.activity_libros)
 
         val botonCrearLibro = findViewById<Button>(R.id.btn_crear_libros)
-        //botonCrearLibro.setOnClickListener()
+        botonCrearLibro.setOnClickListener {
+            irActividad(FormularioLibros("crear", -1, biblioteca)::class.java)
+        }
 
         // Manejo List view
         val listView = findViewById<ListView>(R.id.lv_libros)
@@ -54,16 +56,25 @@ class LibrosActivity : AppCompatActivity() {
     override fun onContextItemSelected(
         item: MenuItem
     ): Boolean {
+        val listView = findViewById<ListView>(R.id.lv_libros)
+        val adaptador = ArrayAdapter(
+            this,
+            android.R.layout.simple_list_item_1,
+            arreglo
+        )
+        val nombreLibroSeleccionada = adaptador.getItem(posicionItemSeleccionado)!!.titulo
         return when (item.itemId){
             R.id.mi_editar_libro -> {
-                mostrarSnackbar(
-                    "Editar $posicionItemSeleccionado")
+                val id = BaseDeDatos.tablaLibro!!.obtenerIDLibro(nombreLibroSeleccionada)
+                if (id != null) irActividad(FormularioLibros("actualizar", id, biblioteca)::class.java)
                 return true
             }
             R.id.mi_eliminar_libro -> {
-                mostrarSnackbar(
-                    "Eliminar $posicionItemSeleccionado")
-                //abrirDialogo()// NUEVA LINEA
+                val id = BaseDeDatos.tablaLibro!!.obtenerIDLibro(nombreLibroSeleccionada)
+                if (id != null) {
+                    BaseDeDatos.tablaLibro!!.eliminarLibro(id)
+                    mostrarSnackbar("Se eliminó el libro: $nombreLibroSeleccionada")
+                }
                 return true
             }
             else -> super.onContextItemSelected(item)
