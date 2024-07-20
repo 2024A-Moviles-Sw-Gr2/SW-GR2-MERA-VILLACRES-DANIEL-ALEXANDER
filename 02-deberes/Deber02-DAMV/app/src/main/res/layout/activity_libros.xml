@@ -9,27 +9,14 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="385dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="108dp"
+        android:layout_width="179dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="60dp"
         android:text="Libros"
         android:textAlignment="center"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.615"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_nombre_biblioteca"
-        android:layout_width="264dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="36dp"
-        android:text="Biblioteca"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintHorizontal_bias="0.202"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,11 +35,11 @@
         android:id="@+id/btn_crear_libros"
         android:layout_width="109dp"
         android:layout_height="63dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="36dp"
         android:text="Crear"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_nombre_biblioteca"
-        app:layout_constraintStart_toEndOf="@+id/tv_nombre_biblioteca"
-        app:layout_constraintTop_toTopOf="@+id/tv_nombre_biblioteca"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -74,10 +74,7 @@ class Biblioteca(
 
     override fun toString(): String {
         val formatoFecha = SimpleDateFormat("dd/MM/yyyy")
-        var texto = "\nNombre: $nombre \t Ubicación: $ubicacion \t Fecha de Creación: ${formatoFecha.format(fechaCreacion)} \t Presupuesto Anual: $presupuestoAnual \t Es Pública: $esPublica" +
-                "\nListado de libros:"
-        val librosBiblioteca = Libro.listarLibrosPorBiblioteca(nombre)
-        librosBiblioteca.forEach { texto += it.toString() }
+        var texto = "\nNombre: $nombre \t Ubicación: $ubicacion \t Fecha de Creación: ${formatoFecha.format(fechaCreacion)} \t Presupuesto Anual: $presupuestoAnual \t Es Pública: $esPublica"
         return texto
     }
 }

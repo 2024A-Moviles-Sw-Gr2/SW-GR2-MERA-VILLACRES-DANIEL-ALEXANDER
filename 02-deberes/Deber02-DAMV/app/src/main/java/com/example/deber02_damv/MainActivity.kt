@@ -1,5 +1,6 @@
 package com.example.deber02_damv
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,93 +11,131 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.deber02_damv.SQLite.BaseDeDatos
+import com.example.deber02_damv.SQLite.SQLiteHelper
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
-    val arreglo = BaseDeDatos.tablaBiblioteca!!.consultarListaBiblioteca()
+    private lateinit var adaptador: ArrayAdapter<Biblioteca>
+    private val bibliotecas: MutableList<Biblioteca> = mutableListOf()
+
+    val callbackFormulario =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ){
+                result ->
+            if(result.resultCode == Activity.RESULT_OK){
+                if(result.data != null){
+                    val data = result.data
+                    val respuesta = data?.getBooleanExtra("respuesta", false)
+                    if(respuesta!!){
+                        actualizarListaBibliotecas()
+                        mostrarSnackbar("Bibliotecas actualizadas")
+                    }else{
+                        mostrarSnackbar("Bibliotecas NO actualizadas")
+                    }
+                }
+            }
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Inicializa la base de datos aquí
+        BaseDeDatos.tablas = SQLiteHelper(this)
+
+
         val botonCrearBiblioteca = findViewById<Button>(R.id.btn_crear_biblioteca)
         botonCrearBiblioteca.setOnClickListener {
-                irActividad(FormularioBiblioteca("crear", -1)::class.java)
-            }
+            val intentExplicito = Intent(
+                this,
+                FormularioBiblioteca::class.java
+            )
+            intentExplicito.putExtra("operacion", "crear")
+            intentExplicito.putExtra("id", -1)
+            callbackFormulario.launch(intentExplicito)
+        }
 
-        // Manejo List view
         val listView = findViewById<ListView>(R.id.lv_bibliotecas)
-        val adaptador = ArrayAdapter(
+        adaptador = ArrayAdapter(
             this,
             android.R.layout.simple_list_item_1,
-            arreglo
+            bibliotecas
         )
         listView.adapter = adaptador
-        adaptador.notifyDataSetChanged()
         registerForContextMenu(listView)
+
+        // Load initial data
+        actualizarListaBibliotecas()
     }
 
-    var posicionItemSeleccionado = -1
+    private var posicionItemSeleccionado = -1
+
     override fun onCreateContextMenu(
         menu: ContextMenu?,
         v: View?,
         menuInfo: ContextMenu.ContextMenuInfo?
     ){
-        super.onCreateContextMenu(menu,v,menuInfo)
-        // llenamos opciones del menu
+        super.onCreateContextMenu(menu, v, menuInfo)
         val inflater = menuInflater
         inflater.inflate(R.menu.menu_bibliotecas, menu)
-        // Obtener id
         val info = menuInfo as AdapterView.AdapterContextMenuInfo
-        val posicion = info.position
-        posicionItemSeleccionado = posicion
+        posicionItemSeleccionado = info.position
     }
-    override fun onContextItemSelected(
-        item: MenuItem
-    ): Boolean {
-        val listView = findViewById<ListView>(R.id.lv_bibliotecas)
-        val adaptador = ArrayAdapter(
-            this,
-            android.R.layout.simple_list_item_1,
-            arreglo
-        )
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
         val nombreBibliotecaSeleccionada = adaptador.getItem(posicionItemSeleccionado)!!.nombre
-        return when (item.itemId){
+        return when (item.itemId) {
             R.id.mi_editar_biblioteca -> {
-                val id = BaseDeDatos.tablaBiblioteca!!.obtenerIDBiblioteca(nombreBibliotecaSeleccionada)
-                if(id != null)irActividad(FormularioBiblioteca("actualizar", id)::class.java)
-                return true
+                val id = BaseDeDatos.tablas!!.obtenerIDBiblioteca(nombreBibliotecaSeleccionada)
+                val intentExplicito = Intent(
+                    this,
+                    FormularioBiblioteca::class.java
+                )
+                intentExplicito.putExtra("operacion", "actualizar")
+                intentExplicito.putExtra("id", id)
+                callbackFormulario.launch(intentExplicito)
+                true
             }
             R.id.mi_eliminar_biblioteca -> {
-                val id = BaseDeDatos.tablaBiblioteca!!.obtenerIDBiblioteca(nombreBibliotecaSeleccionada)
+                val id = BaseDeDatos.tablas!!.obtenerIDBiblioteca(nombreBibliotecaSeleccionada)
                 if (id != null) {
-                    BaseDeDatos.tablaBiblioteca!!.eliminarBiblioteca(id)
+                    BaseDeDatos.tablas!!.eliminarBiblioteca(id)
                     mostrarSnackbar("Se eliminó la biblioteca: $nombreBibliotecaSeleccionada")
+                    actualizarListaBibliotecas()
                 }
-                return true
+                true
             }
             R.id.mi_ver_biblioteca -> {
-                irActividad(LibrosActivity(nombreBibliotecaSeleccionada)::class.java)
-                return true
+                val intentExplicito = Intent(
+                    this,
+                    LibrosActivity::class.java
+                )
+                intentExplicito.putExtra("nombreBibliotecaSeleccionada", nombreBibliotecaSeleccionada)
+                callbackFormulario.launch(intentExplicito)
+                true
+                true
             }
             else -> super.onContextItemSelected(item)
         }
     }
 
-    fun mostrarSnackbar(texto:String){
+    private fun actualizarListaBibliotecas() {
+        val nuevasBibliotecas = BaseDeDatos.tablas?.consultarListaBiblioteca() ?: emptyList()
+        bibliotecas.clear()
+        bibliotecas.addAll(nuevasBibliotecas)
+        adaptador.notifyDataSetChanged()
+    }
+
+    private fun mostrarSnackbar(texto: String) {
         val snack = Snackbar.make(
             findViewById(R.id.cl_main_bibliotecas),
             texto,
             Snackbar.LENGTH_INDEFINITE
         )
         snack.show()
-    }
-
-    fun irActividad(
-        clase: Class<*>
-    ){
-        val intent = Intent(this,clase)
-        startActivity(intent)
     }
 }
