@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomButtonStyle">
+        <item name="android:background">@drawable/button_appearance</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+</resources>

@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cl_movie_catalog"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginBottom="12dp">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:background="@color/backgroundColor">
 
 
     <TextView
@@ -14,11 +15,10 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
         tools:text="Recomendados para ti" />
 
     <androidx.recyclerview.widget.RecyclerView

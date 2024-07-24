@@ -14,10 +14,10 @@ class RecyclerViewActivity : AppCompatActivity() {
 
     fun inicializarRecyclerView(){
         val sectionList = listOf(
-            "Recomendados para ti" to listOf(R.drawable.ic_movie1_avatar, R.drawable.ic_movie2_annabelle, R.drawable.ic_movie3_deadpool),
-            "Descubre lo mejor de Premium" to listOf(R.drawable.ic_movie4_jhonwick, R.drawable.ic_movie5_moana, R.drawable.ic_movie6_starwars),
-            "Series más vistas" to listOf(R.drawable.ic_movie7_starvsevil, R.drawable.ic_movie8_noragami, R.drawable.ic_movie9_parasyte),
-            "Animes más vistos" to listOf(R.drawable.ic_movie10_yourname, R.drawable.ic_movie11_onepiece, R.drawable.ic_movie12_digimon)
+            "Recomendado para ti" to listOf(R.drawable.ic_movie1_avatar, R.drawable.ic_movie2_annabelle, R.drawable.ic_movie3_deadpool, R.drawable.ic_movie7_starvsevil, R.drawable.ic_movie8_noragami, R.drawable.ic_movie9_parasyte),
+            "Descubre lo mejor de Premium" to listOf(R.drawable.ic_movie4_jhonwick, R.drawable.ic_movie5_moana, R.drawable.ic_movie6_starwars, R.drawable.ic_movie2_annabelle, R.drawable.ic_movie3_deadpool, R.drawable.ic_movie9_parasyte),
+            "Series más vistas" to listOf(R.drawable.ic_movie7_starvsevil, R.drawable.ic_movie8_noragami, R.drawable.ic_movie9_parasyte, R.drawable.ic_movie6_starwars, R.drawable.ic_movie2_annabelle, R.drawable.ic_movie3_deadpool),
+            "Animes más vistos" to listOf(R.drawable.ic_movie10_yourname, R.drawable.ic_movie11_onepiece, R.drawable.ic_movie12_digimon, R.drawable.ic_movie1_avatar, R.drawable.ic_movie2_annabelle, R.drawable.ic_movie3_deadpool)
         )
 
         val recyclerView: RecyclerView = findViewById(R.id.rv_movie_sections)

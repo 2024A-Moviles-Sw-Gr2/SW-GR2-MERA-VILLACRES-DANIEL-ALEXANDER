@@ -5,14 +5,137 @@
     android:id="@+id/cl_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     tools:context=".RecyclerViewActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="117dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/iv_diamond"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_diamond"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_prueba_premium"
+        app:layout_constraintEnd_toStartOf="@+id/tv_prueba_premium"
+        app:layout_constraintTop_toTopOf="@+id/tv_prueba_premium"
+        app:layout_constraintVertical_bias="0.363"
+        app:tint="@color/orange" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_movie_sections"
-        android:layout_width="213dp"
-        android:layout_height="359dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bnv_navigation_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tv_vix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="ViX"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_prueba_premium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Prueba Premium"
+        android:textColor="@color/orange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_mas"
+        style="@style/CustomButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:text="Más..."
+        android:textSize="11dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_cine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bt_cine"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/bt_cine"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_cine"
+        style="@style/CustomButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:text="Cine"
+        android:textSize="11dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_novelas"
+        app:layout_constraintEnd_toStartOf="@+id/bt_mas"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/bt_novelas"
+        app:layout_constraintTop_toTopOf="@+id/bt_novelas"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_la_casa"
+        style="@style/CustomButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="55dp"
+        android:text="La Casa..."
+        android:textSize="11dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/bt_novelas"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_novelas"
+        style="@style/CustomButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:text="Novelas"
+        android:textSize="11dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_la_casa"
+        app:layout_constraintStart_toEndOf="@+id/bt_la_casa"
+        app:layout_constraintTop_toTopOf="@+id/bt_la_casa"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@id/bt_cine"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnv_navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:menu="@menu/botton_nav_menu"
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:itemBackground="@color/backgroundColor"
+        android:padding="0dp"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
