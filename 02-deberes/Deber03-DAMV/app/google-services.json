@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "623817804645",
+    "project_id": "deber03-damv",
+    "storage_bucket": "deber03-damv.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:623817804645:android:d041e54ab2561a01f62f8c",
+        "android_client_info": {
+          "package_name": "com.example.deber03_damv"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdvXh9J1YRoQXoP_P_ff-J0NwimumnPAQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
