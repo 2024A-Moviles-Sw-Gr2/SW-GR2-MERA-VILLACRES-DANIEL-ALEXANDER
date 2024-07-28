@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "143319162058",
+    "project_id": "mangafox-732e6",
+    "storage_bucket": "mangafox-732e6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143319162058:android:0f9ae065b89a60d56e6833",
+        "android_client_info": {
+          "package_name": "com.example.proyecto_mangafox"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzIvhsurWJzSwCrIbiIc_WJHGfmmplHa4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

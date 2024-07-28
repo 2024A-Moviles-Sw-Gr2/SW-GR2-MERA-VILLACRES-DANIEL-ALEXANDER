@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Biblioteca"
+        android:icon="@drawable/ic_libro_blanco"
+        android:id="@+id/mi_biblioteca"/>
+    <item android:title="Explorar"
+        android:icon="@drawable/ic_brujula_blanca"
+        android:id="@+id/mi_explorar"/>
+    <item android:title="Cuenta"
+        android:icon="@drawable/ic_usuario_blanco"
+        android:id="@+id/mi_cuenta"/>
+</menu>
