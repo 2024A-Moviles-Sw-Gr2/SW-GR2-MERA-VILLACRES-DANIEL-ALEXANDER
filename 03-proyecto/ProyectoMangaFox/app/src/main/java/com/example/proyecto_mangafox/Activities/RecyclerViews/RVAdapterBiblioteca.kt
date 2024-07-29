@@ -1,6 +1,5 @@
 package com.example.proyecto_mangafox.Activities.RecyclerViews
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.proyecto_mangafox.R
 
 class RVAdapterBiblioteca(
-    private val context: Context,
+    private val itemClickListener: InterfaceOnClick.ItemClickListener,
     private val contenido: List<Pair<List<String>, Int>>
 ) : RecyclerView.Adapter<RVAdapterBiblioteca.SectionViewHolder>() {
 
@@ -18,11 +17,17 @@ class RVAdapterBiblioteca(
         val nombreManga: TextView = view.findViewById(R.id.tv_nombre_manga_itmbiblioteca)
         val numPaginas: TextView = view.findViewById(R.id.tv_num_paginas_itmbiblioteca)
         val portada: ImageView = view.findViewById(R.id.iv_portada_itmbiblioteca)
+
+        init {
+            view.setOnClickListener {
+                itemClickListener.onItemClick(adapterPosition)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SectionViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.fragment_biblioteca, parent, false)
+            .inflate(R.layout.item_manga_biblioteca, parent, false)
         return SectionViewHolder(itemView)
     }
 
@@ -34,4 +39,5 @@ class RVAdapterBiblioteca(
         holder.numPaginas.text = textos[1]
         holder.portada.setImageResource(image)
     }
+
 }

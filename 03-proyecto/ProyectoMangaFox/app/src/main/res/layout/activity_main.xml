@@ -37,7 +37,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/tv_mangafox_main"
             app:layout_constraintStart_toEndOf="@+id/tv_mangafox_main"
             app:layout_constraintTop_toTopOf="@+id/tv_mangafox_main"
-            tools:srcCompat="@drawable/ic_kanji_kitsune" />
+            app:srcCompat="@drawable/ic_kanji_kitsune" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

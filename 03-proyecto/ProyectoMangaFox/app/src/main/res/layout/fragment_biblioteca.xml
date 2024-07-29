@@ -21,7 +21,7 @@
         android:layout_height="25dp"
         android:layout_margin="20dp"
         android:layout_gravity="end|top"
-        tools:srcCompat="@drawable/ic_lupa"
+        app:srcCompat="@drawable/ic_lupa"
         android:onClick="btn_buscar"/>
 
     <androidx.recyclerview.widget.RecyclerView

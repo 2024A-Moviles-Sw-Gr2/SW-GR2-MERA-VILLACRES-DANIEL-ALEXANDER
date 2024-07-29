@@ -22,7 +22,7 @@
             android:id="@+id/tv_nombre_capitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Capítulo 1 Romance Down: Amanecer de la aventura"
+            android:text="Capítulo 1: Amanecer de la aventura"
             android:textColor="@color/gris_azulado"
             style="@style/normal2_style"
             />

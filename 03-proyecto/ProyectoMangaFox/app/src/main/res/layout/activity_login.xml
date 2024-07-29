@@ -36,7 +36,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/tv_mangafox_login"
             app:layout_constraintStart_toEndOf="@+id/tv_mangafox_login"
             app:layout_constraintTop_toTopOf="@+id/tv_mangafox_login"
-            tools:srcCompat="@drawable/ic_kanji_kitsune" />
+            app:srcCompat="@drawable/ic_kanji_kitsune" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -49,7 +49,8 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_header_main_login"
-        tools:src="@drawable/ic_mangafox_logo" />
+        android:src="@drawable/ic_mangafox_logo"
+        app:srcCompat="@drawable/ic_mangafox_logo"/>
 
     <TextView
         android:id="@+id/tv_inicio_de_sesion_login"
