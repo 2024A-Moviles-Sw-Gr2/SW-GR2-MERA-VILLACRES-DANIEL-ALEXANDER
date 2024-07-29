@@ -49,7 +49,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_header_main_registrarse"
-        tools:src="@drawable/ic_mangafox_logo" />
+        app:srcCompat="@drawable/ic_mangafox_logo" />
 
     <TextView
         android:id="@+id/tv_registrarse"
