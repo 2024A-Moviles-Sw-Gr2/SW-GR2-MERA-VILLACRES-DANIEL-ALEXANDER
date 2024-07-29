@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.InfoManga">
+
+    <ImageView
+        android:id="@+id/iv_portada_fondo"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_one_piece_manga"
+        android:alpha="0.2"
+        android:background="@drawable/blur_overlay"/>
+
+    <ImageView
+        android:id="@+id/iv_portada_frente"
+        android:layout_width="150dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/corner_radius_low"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_one_piece_manga" />
+
+    <ImageView
+        android:id="@+id/iv_regresar_infomanga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:scaleType="center"
+        android:padding="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_regresar"
+        android:onClick="btn_regresar"/>
+
+    <TextView
+        android:id="@+id/tv_nombre_manga_infomanga"
+        style="@style/titulo2_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="125dp"
+        android:text="One Piece"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintStart_toEndOf="@+id/iv_portada_frente"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_autor_infomanga"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="18dp"
+        android:padding="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="@+id/tv_nombre_manga_infomanga"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_nombre_manga_infomanga"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nombre_manga_infomanga"
+        app:srcCompat="@drawable/ic_usuario_blanco"
+        app:tint="@color/gris_azulado"/>
+
+    <ImageView
+        android:id="@+id/iv_estado_infomanga"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:padding="0dp"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toEndOf="@+id/iv_autor_infomanga"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/iv_autor_infomanga"
+        app:layout_constraintTop_toBottomOf="@+id/iv_autor_infomanga"
+        app:srcCompat="@drawable/ic_reloj"
+        app:tint="@color/gris_azulado"/>
+
+    <TextView
+        android:id="@+id/tv_nombre_autor_infomanga"
+        style="@style/placeholder_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eichiro Oda"
+        android:textColor="@color/gris_azulado"
+        android:layout_marginStart="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_autor_infomanga"
+        app:layout_constraintStart_toEndOf="@+id/iv_autor_infomanga"
+        app:layout_constraintTop_toTopOf="@+id/iv_autor_infomanga" />
+
+    <TextView
+        android:id="@+id/tv_estado_infomanga"
+        style="@style/placeholder_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="En publicación"
+        android:textColor="@color/gris_azulado"
+        android:layout_marginStart="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_estado_infomanga"
+        app:layout_constraintStart_toEndOf="@+id/iv_estado_infomanga"
+        app:layout_constraintTop_toTopOf="@+id/iv_estado_infomanga" />
+
+    <ImageView
+        android:id="@+id/iv_guardar_infomanga"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="27dp"
+        android:onClick="btn_guardar"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_descipcion_infomanga"
+        app:layout_constraintEnd_toStartOf="@+id/tv_descipcion_infomanga"
+        app:layout_constraintTop_toTopOf="@+id/tv_descipcion_infomanga"
+        app:layout_constraintVertical_bias="0.353"
+        app:srcCompat="@drawable/ic_corazon_negro" />
+
+    <TextView
+        android:id="@+id/tv_descipcion_infomanga"
+        style="@style/placeholder_style"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:justificationMode="inter_word"
+        android:maxWidth="300dp"
+        android:text="Hace veintidós años, el legendario pirata, Gold Roger fue ejecutado- Sus últimas palabras fueron que su tesoro
+conocido como 'One Piece' estaba escondido en algún lugar dentro del vasto océano conocido como el 'Grand
+    Line'. Esto dio inicio a la Era de los Piratas. Ahora, se nos presenta a Monkey D. Luffy, un
+    joven que, inspirado por su ídolo de la infancia emprende su viaje en busca del One Piece, con el objetivo de convertirse en el Rey de los Piratas."
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.855"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_portada_frente" />
+
+    <TextView
+        android:id="@+id/tv_guardar_infomanga"
+        style="@style/placeholder_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="En biblioteca"
+        android:textColor="@color/gris_azulado"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="@+id/iv_guardar_infomanga"
+        app:layout_constraintStart_toStartOf="@+id/iv_guardar_infomanga"
+        app:layout_constraintTop_toBottomOf="@+id/iv_guardar_infomanga" />
+
+    <TextView
+        android:id="@+id/tv_genero1"
+        style="@style/placeholder_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/borde_negro"
+        android:padding="8dp"
+        android:text="Acción"
+        android:textColor="@color/gris_azulado"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_descipcion_infomanga" />
+
+    <TextView
+        android:id="@+id/tv_genero2"
+        style="@style/placeholder_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/borde_negro"
+        android:padding="8dp"
+        android:text="Comedia"
+        android:textColor="@color/gris_azulado"
+        app:layout_constraintStart_toEndOf="@+id/tv_genero1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_descipcion_infomanga" />
+
+    <TextView
+        android:id="@+id/tv_num_capitulos_infomanga"
+        style="@style/normal1_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="1 capítulo"
+        android:textColor="@color/secundario"
+        app:layout_constraintEnd_toEndOf="@+id/tv_genero1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_genero1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_genero1" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_capitulos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_num_capitulos_infomanga"
+        tools:listitem="@layout/item_capitulos_info_manga"/>
+
+
+    <FrameLayout
+        android:id="@+id/fl_leer_infomanga"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/cuadro_leer"
+        android:onClick="btn_leer"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/ib_ajustes_infomanga"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="start|center_vertical"
+            android:background="@color/white"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_play"
+            app:tint="@color/secundario"
+            android:backgroundTint="@color/primario"
+            />
+
+        <TextView
+            android:id="@+id/tv_ajustes_infomanga"
+            style="@style/placeholder_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:text="Continuar"
+            android:textColor="@color/gris_azulado" />
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

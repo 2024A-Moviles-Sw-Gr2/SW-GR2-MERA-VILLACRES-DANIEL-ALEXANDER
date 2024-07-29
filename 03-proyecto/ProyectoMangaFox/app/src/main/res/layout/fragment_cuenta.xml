@@ -1,17 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.CuentaFragment"
-    android:background="#ff0">
+    >
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cuenta"
-        android:textSize="26dp"
-        android:layout_gravity="center"/>
+        android:text="Hola, George Quishpe"
+        android:textColor="@color/black"
+        style="@style/titulo2_style"
+        android:layout_margin="30dp"/>
+
+    <ImageView
+        android:id="@+id/iv_logo_cuenta"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        tools:src="@drawable/ic_mangafox_logo"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginVertical="100dp"/>
+
+    <FrameLayout
+        android:id="@+id/fl_ajustes"
+        android:layout_width="141dp"
+        android:layout_height="30dp"
+        android:layout_gravity="start"
+        android:onClick="btn_ajustes"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="250dp"
+        android:paddingEnd="21dp">
+
+        <ImageButton
+            android:id="@+id/ib_ajustes"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="start|center_vertical"
+            android:background="@color/white"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_rueda_config"
+            app:tint="@color/azul_marino"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_ajustes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ajustes"
+            style="@style/normal1_style"
+            android:textColor="@color/gris_azulado"
+            android:layout_gravity="center"
+            />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_acerda_de"
+        android:layout_width="141dp"
+        android:layout_height="30dp"
+        android:layout_gravity="start"
+        android:onClick="btn_acerda_de"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="290dp">
+
+        <ImageButton
+            android:id="@+id/ib_acerda_de"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:scaleType="fitCenter"
+            android:layout_gravity="start|center_vertical"
+            android:background="@color/white"
+            android:src="@drawable/ic_info"
+            app:tint="@color/azul_marino"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_acerda_de"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Acerca de"
+            style="@style/normal1_style"
+            android:textColor="@color/gris_azulado"
+            android:layout_gravity="center"
+            />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_ayuda"
+        android:layout_width="141dp"
+        android:layout_height="30dp"
+        android:layout_gravity="start"
+        android:onClick="btn_ayuda"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="330dp"
+        android:paddingEnd="25dp">
+
+        <ImageButton
+            android:id="@+id/ib_ayuda"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:scaleType="fitCenter"
+            android:layout_gravity="start|center_vertical"
+            android:background="@color/white"
+            android:src="@drawable/ic_ayuda"
+            app:tint="@color/azul_marino"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_ayuda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ayuda"
+            style="@style/normal1_style"
+            android:textColor="@color/gris_azulado"
+            android:layout_gravity="center"
+            />
+
+    </FrameLayout>
 
 </FrameLayout>

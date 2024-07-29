@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Estilo para texto -->
+    <style name="titulo1_style">
+        <item name="android:fontFamily">@font/montserrat_alternates</item>
+        <item name="android:textSize">29sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="titulo2_style">
+        <item name="android:fontFamily">@font/montserrat_alternates</item>
+        <item name="android:textSize">21sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="normal1_style">
+        <item name="android:fontFamily">@font/montserrat_alternates</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="normal2_style">
+        <item name="android:fontFamily">@font/montserrat_alternates</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="placeholder_style">
+        <item name="android:fontFamily">@font/montserrat_alternates</item>
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <!-- Estilo para menu items-->
+    <style name="BottomNavigationView.Active" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor">@color/secundario</item>
+        <item name="android:background">@drawable/cuadro_seleccion</item>
+        <item name="android:fontFamily">@font/montserrat_alternates</item>
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="BottomNavigationView.Inactive" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor">@color/gris_azulado</item>
+        <item name="android:fontFamily">@font/montserrat_alternates</item>
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <!-- Estilo para boton-->
+    <style name="CustomButtonStyle">
+        <item name="android:background">@drawable/corner_radius_low</item>
+        <item name="android:backgroundTint">@color/gris_azulado</item>
+        <item name="android:textColor">@color/terciario</item>
+        <item name="android:fontFamily">@font/montserrat_alternates</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+</resources>

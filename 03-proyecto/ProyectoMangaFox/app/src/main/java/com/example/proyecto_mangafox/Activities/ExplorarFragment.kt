@@ -16,4 +16,6 @@ class ExplorarFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_explorar, container, false)
     }
 
+    fun btn_buscar(view: View) {}
+
 }

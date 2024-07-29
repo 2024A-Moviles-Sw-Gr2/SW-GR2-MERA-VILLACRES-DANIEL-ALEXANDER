@@ -8,7 +8,6 @@
     android:layout_marginBottom="12dp"
     android:background="@color/backgroundColor">
 
-
     <TextView
         android:id="@+id/tv_catalog_name"
         android:layout_width="0dp"
@@ -33,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_catalog_name"
-        tools:listitem="@layout/rv_item_movie" />
+        tools:listitem="@layout/activity_item_movie" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

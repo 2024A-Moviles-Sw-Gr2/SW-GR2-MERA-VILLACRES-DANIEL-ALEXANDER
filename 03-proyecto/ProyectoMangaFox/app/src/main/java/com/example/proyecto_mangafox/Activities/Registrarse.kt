@@ -3,17 +3,16 @@ package com.example.proyecto_mangafox.Activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import com.example.proyecto_mangafox.R
 
-class Login : AppCompatActivity() {
+class Registrarse : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_registrarse)
 
-        val botonLogin = findViewById<Button>(R.id.btn_login)
-        botonLogin.setOnClickListener { irActividad(MainActivity::class.java) }
+        val botonRegistrarse = findViewById<Button>(R.id.btn_registrarse)
+        botonRegistrarse.setOnClickListener { irActividad(Login::class.java) }
     }
 
     fun irActividad(
@@ -21,9 +20,5 @@ class Login : AppCompatActivity() {
     ){
         val intent = Intent(this,clase)
         startActivity(intent)
-    }
-
-    fun btn_registrarse(view: View) {
-        irActividad(Registrarse::class.java)
     }
 }

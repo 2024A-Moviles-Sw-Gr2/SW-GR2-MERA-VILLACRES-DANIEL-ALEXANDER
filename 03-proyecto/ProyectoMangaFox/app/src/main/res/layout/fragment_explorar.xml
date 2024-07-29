@@ -3,15 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.ExplorarFragment"
-    android:background="#0f0">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Activities.ExplorarFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/tv_explorar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Explorar"
-        android:textSize="26dp"
-        android:layout_gravity="center"/>
+        style="@style/titulo2_style"
+        android:layout_margin="20dp"/>
+
+    <ImageView
+        android:id="@+id/iv_buscar_explorar"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_margin="20dp"
+        android:layout_gravity="end|top"
+        tools:srcCompat="@drawable/ic_lupa"
+        android:onClick="btn_buscar"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_explorar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:layout_weight="1"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:listitem="@layout/item_manga_biblioteca"/>
 
 </FrameLayout>

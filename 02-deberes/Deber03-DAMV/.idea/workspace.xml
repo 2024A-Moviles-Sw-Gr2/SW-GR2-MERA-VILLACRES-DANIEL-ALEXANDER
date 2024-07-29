@@ -9,7 +9,58 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68e0029d-aadd-454d-bfd4-3ef36b663e61" name="Changes" comment="" />
+    <list default="true" id="68e0029d-aadd-454d-bfd4-3ef36b663e61" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/java/com/example/proyecto_mangafox/Activities/InfoManga.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/java/com/example/proyecto_mangafox/Activities/LeerManga.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/java/com/example/proyecto_mangafox/Activities/RecyclerViews/RVAdapterBiblioteca.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/java/com/example/proyecto_mangafox/Activities/RecyclerViews/RVAdapterExplorar.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/java/com/example/proyecto_mangafox/Activities/RecyclerViews/RVAdapterInfoManga.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/java/com/example/proyecto_mangafox/Activities/RecyclerViews/RecyclerViewBiblioteca.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/java/com/example/proyecto_mangafox/Activities/RecyclerViews/RecyclerViewExplorar.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/java/com/example/proyecto_mangafox/Activities/RecyclerViews/RecyclerViewInfoManga.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/java/com/example/proyecto_mangafox/Activities/Registrarse.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/drawable/blur_overlay.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/drawable/borde_azul.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/drawable/borde_negro.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/drawable/corner_radius_high.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/drawable/corner_radius_low.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/drawable/corner_radius_medium.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/drawable/cuadro_leer.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/drawable/cuadro_login.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/drawable/cuadro_seleccion.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/drawable/ic_haikyuu_manga.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/drawable/ic_kaguya_sama_manga.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/drawable/ic_kanji_kitsune.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/drawable/ic_naruto_manga.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/drawable/ic_one_piece_manga.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/drawable/ic_one_piece_pag_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/drawable/ic_solo_leveling_manga.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/drawable/ic_tokyo_ghoul_manga.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/font/montserrat_alternates.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/layout/activity_info_manga.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/layout/activity_leer_manga.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/layout/activity_registrarse.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/layout/item_capitulos_info_manga.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/layout/item_manga_biblioteca.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/layout/item_manga_explorar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/deber03_damv/HorizontalRecyclerViewAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/deber03_damv/HorizontalRecyclerViewAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/deber03_damv/RecyclerViewAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/deber03_damv/RecyclerViewAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/rv_item_movie.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_item_movie.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/rv_item_movie_catalog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_item_movie_catalog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/java/com/example/proyecto_mangafox/Activities/BibliotecaFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/java/com/example/proyecto_mangafox/Activities/BibliotecaFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/java/com/example/proyecto_mangafox/Activities/CuentaFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/java/com/example/proyecto_mangafox/Activities/CuentaFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/java/com/example/proyecto_mangafox/Activities/ExplorarFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/java/com/example/proyecto_mangafox/Activities/ExplorarFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/java/com/example/proyecto_mangafox/Activities/Login.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/java/com/example/proyecto_mangafox/Activities/Login.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/layout/fragment_biblioteca.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/layout/fragment_biblioteca.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/layout/fragment_cuenta.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/layout/fragment_cuenta.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/layout/fragment_explorar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/layout/fragment_explorar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../03-proyecto/ProyectoMangaFox/app/src/main/res/values/colors.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,18 +97,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/escritorio.virtual33/Documents/SW-GR2-MERA-VILLACRES-DANIEL-ALEXANDER/02-deberes/Deber02-DAMV",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/escritorio.virtual33/Documents/SW-GR2-MERA-VILLACRES-DANIEL-ALEXANDER/02-deberes/Deber03-DAMV&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="android.template.1129039800">
       <recent name="com.example.deber03_damv" />

@@ -20,7 +20,7 @@ class RecyclerViewAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SectionViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.rv_item_movie_catalog, parent, false)
+            .inflate(R.layout.activity_item_movie_catalog, parent, false)
         return SectionViewHolder(itemView)
     }
 

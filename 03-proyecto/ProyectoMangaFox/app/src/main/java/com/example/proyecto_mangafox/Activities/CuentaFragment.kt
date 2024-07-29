@@ -16,4 +16,8 @@ class CuentaFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_cuenta, container, false)
     }
 
+    fun btn_ajustes(view: View) {}
+    fun btn_acerda_de(view: View) {}
+    fun btn_ayuda(view: View) {}
+
 }

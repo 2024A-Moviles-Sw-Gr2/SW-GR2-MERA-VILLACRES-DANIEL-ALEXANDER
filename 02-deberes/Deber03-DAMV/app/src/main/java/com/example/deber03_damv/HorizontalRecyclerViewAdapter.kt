@@ -16,7 +16,7 @@ class HorizontalRecyclerViewAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.rv_item_movie, parent, false)
+            .inflate(R.layout.activity_item_movie, parent, false)
         return ImageViewHolder(itemView)
     }
 
