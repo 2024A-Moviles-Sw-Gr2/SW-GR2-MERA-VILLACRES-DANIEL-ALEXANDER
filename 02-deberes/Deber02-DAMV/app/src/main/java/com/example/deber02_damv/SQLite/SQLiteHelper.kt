@@ -24,7 +24,9 @@ class SQLiteHelper(
                 ubicacion VARCHAR(50),
                 fechaCreacion DATE,
                 presupuestoAnual DECIMAL(15, 2),
-                esPublica BOOLEAN
+                esPublica BOOLEAN,
+                latitud DECIMAL(15),
+                longitud DECIMAL(15)
             )
         """.trimIndent()
         db?.execSQL(scriptSQLCrearTablaBiblioteca)
@@ -55,7 +57,9 @@ class SQLiteHelper(
         ubicacion: String,
         fechaCreacion: Date,
         presupuestoAnual: Double,
-        esPublica: Boolean
+        esPublica: Boolean,
+        latitud: Double,
+        longitud: Double
     ): Boolean {
         val basedatosEscritura = writableDatabase
         val valoresAGuardar = ContentValues()
@@ -67,6 +71,8 @@ class SQLiteHelper(
         valoresAGuardar.put("fechaCreacion", fechaTimestamp)
         valoresAGuardar.put("presupuestoAnual", presupuestoAnual)
         valoresAGuardar.put("esPublica", esPublica)
+        valoresAGuardar.put("latitud", latitud)
+        valoresAGuardar.put("longitud", longitud)
         val resultadoGuardar = basedatosEscritura.insert(
             "BIBLIOTECA",
             null,
@@ -94,7 +100,9 @@ class SQLiteHelper(
         ubicacion: String,
         fechaCreacion: Date,
         presupuestoAnual: Double,
-        esPublica: Boolean
+        esPublica: Boolean,
+        latitud: Double,
+        longitud: Double
     ): Boolean {
         val conexionEscritura = writableDatabase
         val valoresAActualizar = ContentValues()
@@ -106,6 +114,8 @@ class SQLiteHelper(
         valoresAActualizar.put("fechaCreacion", fechaTimestamp)
         valoresAActualizar.put("presupuestoAnual", presupuestoAnual)
         valoresAActualizar.put("esPublica", esPublica)
+        valoresAActualizar.put("latitud", latitud)
+        valoresAActualizar.put("longitud", longitud)
 
         val parametrosConsultaActualizar = arrayOf(id.toString())
         val resultadoActualizacion = conexionEscritura.update(
@@ -138,12 +148,16 @@ class SQLiteHelper(
                 val indiceFechaCreacion = resultadoConsultaLectura.getColumnIndex("fechaCreacion")
                 val indicePresupuestoAnual = resultadoConsultaLectura.getColumnIndex("presupuestoAnual")
                 val indiceEsPublica = resultadoConsultaLectura.getColumnIndex("esPublica")
+                val indiceLatitud = resultadoConsultaLectura.getColumnIndex("latitud")
+                val indiceLongitud = resultadoConsultaLectura.getColumnIndex("longitud")
 
                 val nombreBiblioteca = resultadoConsultaLectura.getString(indiceNombre)
                 val ubicacion = resultadoConsultaLectura.getString(indiceUbicacion)
                 val fechaCreacionTimestamp = resultadoConsultaLectura.getLong(indiceFechaCreacion)
                 val presupuestoAnual = resultadoConsultaLectura.getDouble(indicePresupuestoAnual)
                 val esPublica = resultadoConsultaLectura.getInt(indiceEsPublica)
+                val latitud = resultadoConsultaLectura.getDouble(indiceLatitud)
+                val longitud = resultadoConsultaLectura.getDouble(indiceLongitud)
 
                 val fechaCreacion = Date(fechaCreacionTimestamp)
                 val esPublicaBoolean = esPublica == 1
@@ -153,7 +167,9 @@ class SQLiteHelper(
                     ubicacion,
                     fechaCreacion,
                     presupuestoAnual,
-                    esPublicaBoolean
+                    esPublicaBoolean,
+                    latitud,
+                    longitud
                 )
                 arregloRespuesta.add(biblioteca)
             } while (resultadoConsultaLectura.moveToNext())
@@ -224,12 +240,16 @@ class SQLiteHelper(
                 val indiceFechaCreacion = resultadoConsultaLectura.getColumnIndex("fechaCreacion")
                 val indicePresupuestoAnual = resultadoConsultaLectura.getColumnIndex("presupuestoAnual")
                 val indiceEsPublica = resultadoConsultaLectura.getColumnIndex("esPublica")
+                val indiceLatitud = resultadoConsultaLectura.getColumnIndex("latitud")
+                val indiceLongitud = resultadoConsultaLectura.getColumnIndex("longitud")
 
                 val nombreBiblioteca = resultadoConsultaLectura.getString(indiceNombre)
                 val ubicacion = resultadoConsultaLectura.getString(indiceUbicacion)
                 val fechaCreacionTimestamp = resultadoConsultaLectura.getLong(indiceFechaCreacion)
                 val presupuestoAnual = resultadoConsultaLectura.getDouble(indicePresupuestoAnual)
                 val esPublica = resultadoConsultaLectura.getInt(indiceEsPublica)
+                val latitud = resultadoConsultaLectura.getDouble(indiceLatitud)
+                val longitud = resultadoConsultaLectura.getDouble(indiceLongitud)
 
                 val fechaCreacion = Date(fechaCreacionTimestamp)
                 val esPublicaBoolean = esPublica == 1
@@ -239,7 +259,9 @@ class SQLiteHelper(
                     ubicacion,
                     fechaCreacion,
                     presupuestoAnual,
-                    esPublicaBoolean
+                    esPublicaBoolean,
+                    latitud,
+                    longitud
                 )
                 arregloRespuesta.add(biblioteca)
             } while (resultadoConsultaLectura.moveToNext())

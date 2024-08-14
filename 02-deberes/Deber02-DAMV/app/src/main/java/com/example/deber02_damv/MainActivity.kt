@@ -114,9 +114,18 @@ class MainActivity : AppCompatActivity() {
                     this,
                     LibrosActivity::class.java
                 )
-                intentExplicito.putExtra("nombreBibliotecaSeleccionada", nombreBibliotecaSeleccionada)
+                intentExplicito.putExtra("biblioteca", nombreBibliotecaSeleccionada)
                 callbackFormulario.launch(intentExplicito)
                 true
+            }
+            R.id.mi_ver_ubicación -> {
+                val intentExplicito = Intent(
+                    this,
+                    MapView::class.java
+                )
+                val id = BaseDeDatos.tablas!!.obtenerIDBiblioteca(nombreBibliotecaSeleccionada)
+                intentExplicito.putExtra("id", id)
+                callbackFormulario.launch(intentExplicito)
                 true
             }
             else -> super.onContextItemSelected(item)

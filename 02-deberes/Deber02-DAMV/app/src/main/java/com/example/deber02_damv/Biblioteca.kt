@@ -8,7 +8,9 @@ class Biblioteca(
     var ubicacion: String,
     var fechaCreacion: Date,
     var presupuestoAnual: Double,
-    var esPublica: Boolean
+    var esPublica: Boolean,
+    var latitud: Double,
+    var longitud: Double
 ) {
     fun agregarLibros(nuevosLibros: MutableList<Libro>) {
         Companion.libros = nuevosLibros
