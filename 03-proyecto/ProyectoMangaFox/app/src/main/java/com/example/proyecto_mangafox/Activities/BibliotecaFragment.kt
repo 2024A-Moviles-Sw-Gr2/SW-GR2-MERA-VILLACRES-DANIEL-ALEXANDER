@@ -32,7 +32,7 @@ class BibliotecaFragment : Fragment(), InterfaceOnClick.ItemClickListener {
 
         val recyclerView: RecyclerView = view.findViewById(R.id.rv_biblioteca)
 
-        val currentUserId = "Mataso97" // Cambia esto por el ID real del usuario
+        val currentUserId = arguments?.getString("username") ?: "Mataso97"
 
         db.collection("Usuario").document(currentUserId)
             .collection("MiBiblioteca")

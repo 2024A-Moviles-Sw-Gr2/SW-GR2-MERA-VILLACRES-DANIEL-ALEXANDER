@@ -20,7 +20,12 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.mi_biblioteca -> {
-                    loadFragment(BibliotecaFragment())
+                    val username = intent.getStringExtra("username")
+                    val fragment = BibliotecaFragment()
+                    val bundle = Bundle()
+                    bundle.putString("username", username)
+                    fragment.arguments = bundle
+                    loadFragment(fragment)
                     true
                 }
                 R.id.mi_explorar -> {
@@ -36,7 +41,6 @@ class MainActivity : AppCompatActivity() {
         }
         // Cargar el fragmento por defecto
         binding.bottomNavigationView.selectedItemId = R.id.mi_biblioteca
-
     }
 
     private fun loadFragment(fragment: Fragment) {
@@ -44,5 +48,4 @@ class MainActivity : AppCompatActivity() {
         transaction.replace(R.id.fl_contenido_main, fragment)
         transaction.commit()
     }
-
 }
