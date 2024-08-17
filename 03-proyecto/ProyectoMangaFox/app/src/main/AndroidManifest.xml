@@ -22,9 +22,6 @@
             android:name=".Activities.Registrarse"
             android:exported="false" />
         <activity
-            android:name=".Activities.Registrarse"
-            android:exported="false" />
-        <activity
             android:name=".Activities.MainActivity"
             android:exported="false" />
         <activity

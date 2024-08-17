@@ -1,13 +1,89 @@
 {
   "project_info": {
-    "project_number": "143319162058",
-    "project_id": "mangafox-732e6",
-    "storage_bucket": "mangafox-732e6.appspot.com"
+    "project_number": "731279660226",
+    "project_id": "qhgm-2024a-sw-gr2",
+    "storage_bucket": "qhgm-2024a-sw-gr2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:143319162058:android:0f9ae065b89a60d56e6833",
+        "mobilesdk_app_id": "1:731279660226:android:77ff399fa18d9fdf56175b",
+        "android_client_info": {
+          "package_name": "com.example.a02_crud_gui"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiLrUN3JhoYIMsFe7cSUx4Z5o5-HQaS6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731279660226:android:0ed3d820474984f556175b",
+        "android_client_info": {
+          "package_name": "com.example.a02_sqlite_maps"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiLrUN3JhoYIMsFe7cSUx4Z5o5-HQaS6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731279660226:android:6f8101568b86ad7556175b",
+        "android_client_info": {
+          "package_name": "com.example.a03_recycleview_crunchyroll"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiLrUN3JhoYIMsFe7cSUx4Z5o5-HQaS6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731279660226:android:d4e8e9a3fa47e31b56175b",
+        "android_client_info": {
+          "package_name": "com.example.a2024swgr2qhgm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiLrUN3JhoYIMsFe7cSUx4Z5o5-HQaS6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731279660226:android:4b53cce36aafa01256175b",
         "android_client_info": {
           "package_name": "com.example.proyecto_mangafox"
         }
@@ -15,7 +91,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDzIvhsurWJzSwCrIbiIc_WJHGfmmplHa4"
+          "current_key": "AIzaSyAiLrUN3JhoYIMsFe7cSUx4Z5o5-HQaS6A"
         }
       ],
       "services": {
