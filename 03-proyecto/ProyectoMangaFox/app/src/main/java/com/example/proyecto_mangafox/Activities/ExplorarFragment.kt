@@ -23,6 +23,7 @@ import kotlinx.coroutines.launch
 
 class ExplorarFragment : Fragment(), InterfaceOnClick.ItemClickListener {
 
+    private lateinit var adapterExplorar: RVAdapterExplorar
     val db = Firebase.firestore
 
     override fun onCreateView(
@@ -32,7 +33,7 @@ class ExplorarFragment : Fragment(), InterfaceOnClick.ItemClickListener {
         val view = inflater.inflate(R.layout.fragment_explorar, container, false)
 
         // Inicializa sectionList como una lista mutable
-        val sectionList = mutableListOf<Pair<String, String>>()
+        val sectionList = mutableListOf<Pair<List<String>, String>>()
 
         // Configura el RecyclerView
         val recyclerView: RecyclerView = view.findViewById(R.id.rv_explorar)
@@ -45,13 +46,15 @@ class ExplorarFragment : Fragment(), InterfaceOnClick.ItemClickListener {
                     Log.d("Manga", "${document.id} => ${document.get("titulo")}")
                     // Obtiene el título y el URL de la portada del manga
                     val tituloManga = document.get("titulo").toString()
+                    val mangaID = tituloManga.replace(" ", "")
                     val portadaMangaURL = document.get("portadaURL").toString()
 
-                    sectionList.add(tituloManga to portadaMangaURL)
+                    sectionList.add(listOf(tituloManga, mangaID) to portadaMangaURL)
                 }
 
                 // Configura el adaptador del RecyclerView después de haber llenado la lista
-                recyclerView.adapter = RVAdapterExplorar(this, sectionList)
+                adapterExplorar = RVAdapterExplorar(this, sectionList)
+                recyclerView.adapter = adapterExplorar
             }
             .addOnFailureListener { exception ->
                 Log.w("FirestoreError", "Error getting documents.", exception)
@@ -65,14 +68,16 @@ class ExplorarFragment : Fragment(), InterfaceOnClick.ItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-        // Llama a la función para cambiar de actividad
-        when (position) {
-            0 -> irActividad(InfoManga::class.java)
-        }
+        // Obtén el título del manga seleccionado
+        val mangaTitulo = (adapterExplorar).contenido[position].first[1]
+
+        // Llama a la función para cambiar de actividad, pasando el título del manga como extra
+        irActividad(InfoManga::class.java, mangaTitulo)
     }
 
-    private fun irActividad(clase: Class<*>) {
+    private fun irActividad(clase: Class<*>, mangaTitulo: String) {
         val intent = Intent(activity, clase)
+        intent.putExtra("mangaID", mangaTitulo)
         startActivity(intent)
     }
 

@@ -13,7 +13,7 @@ import com.example.proyecto_mangafox.R
 
 class RVAdapterExplorar(
     private val itemClickListener: InterfaceOnClick.ItemClickListener,
-    private val contenido: List<Pair<String, String>>
+    val contenido: List<Pair<List<String>, String>>
 ) : RecyclerView.Adapter<RVAdapterExplorar.SectionViewHolder>() {
 
     inner class SectionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -37,7 +37,7 @@ class RVAdapterExplorar(
 
     override fun onBindViewHolder(holder: SectionViewHolder, position: Int) {
         val (texto, imageUrl) = contenido[position]
-        holder.nombreManga.text = texto
+        holder.nombreManga.text = texto[0]
         // Usa Glide para cargar la imagen en el ImageView
         Glide.with(holder.itemView.context)
             .load(imageUrl)

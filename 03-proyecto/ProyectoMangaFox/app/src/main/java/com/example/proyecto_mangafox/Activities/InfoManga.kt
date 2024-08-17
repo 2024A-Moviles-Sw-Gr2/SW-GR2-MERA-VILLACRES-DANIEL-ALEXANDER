@@ -27,10 +27,12 @@ class InfoManga : AppCompatActivity(), InterfaceOnClick.ItemClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info_manga)
 
-        //val mangaID = intent.getStringExtra("mangaID")
-        val mangaID = "JujutsuKaisen"
-        inicializarRecyclerView(mangaID)
-        llenarDatosManga(mangaID)
+        val mangaID = intent.getStringExtra("mangaID")
+        //val mangaID = "JujutsuKaisen"
+        if (mangaID != null) {
+            inicializarRecyclerView(mangaID)
+            llenarDatosManga(mangaID)
+        }
 
     }
 
