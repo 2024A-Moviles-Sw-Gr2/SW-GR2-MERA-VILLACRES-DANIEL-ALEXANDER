@@ -2,6 +2,7 @@ package com.example.proyecto_mangafox.Activities
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyecto_mangafox.R
 import com.google.firebase.firestore.ktx.firestore
@@ -25,40 +26,55 @@ class LeerManga : AppCompatActivity() {
         setContentView(R.layout.activity_leer_manga)
 
         pdfView = findViewById(R.id.pdfView)
+        val nombreManga = findViewById<TextView>(R.id.tv_nombre_manga_leermanga)
+        val nombreCapitulo = findViewById<TextView>(R.id.tv_nombre_capitulo_leermanga)
 
-        //val mangaID = "JujutsuKaisen"
-        //val numCapitulo = "JK01"
         val mangaID = intent.getStringExtra("mangaID")
         val capituloID = intent.getStringExtra("capituloID")
-        val numCapitulo = intent.getStringExtra("numCapitulo")
-        //obtenerInfoCapitulo(mangaID, numCapitulo)
+
         if (mangaID != null && capituloID != null) {
+            obtenerTituloManga(mangaID, nombreManga)
+            obtenerNombreCapitulo(mangaID, capituloID, nombreCapitulo)
             obtenerUrlManga(mangaID, capituloID)
         }
     }
 
-    /*private fun obtenerInfoCapitulo(mangaID: String, numCapitulo: String): Pair<String, String> {
-        var tituloCapitulo = ""
-        var numeroCapitulo = ""
+    private fun obtenerTituloManga(mangaID: String, textView: TextView) {
+        db.collection("Manga")
+            .document(mangaID)
+            .get()
+            .addOnSuccessListener { document ->
+                val nombreManga = document.getString("titulo") ?: "Título no disponible"
+                textView.text = nombreManga
+            }
+            .addOnFailureListener { exception ->
+                Log.d("InfoManga", "Error al obtener la información del manga: ", exception)
+                textView.text = "Error al cargar título"
+            }
+    }
+
+    private fun obtenerNombreCapitulo(mangaID: String, capituloID: String, textView: TextView) {
         db.collection("Manga")
             .document(mangaID)
             .collection("Capitulos")
-            .document(numCapitulo)
+            .document(capituloID)
             .get()
             .addOnSuccessListener { document ->
-                tituloCapitulo = document.getString("tituloCapitulo") ?: ""
+                val numCap = document.get("numCap")?.toString() ?: "Desconocido"
+                val tituloCapitulo = document.get("tituloCapitulo") ?: "Título no disponible"
+                textView.text = "Capítulo $numCap: $tituloCapitulo"
             }
             .addOnFailureListener { exception ->
                 Log.d("InfoCapitulo", "Error al obtener la información del capítulo: ", exception)
+                textView.text = "Error al cargar capítulo"
             }
-        return Pair(tituloCapitulo, numCapitulo)
-    }*/
+    }
 
-    private fun obtenerUrlManga(mangaID: String, numCapitulo: String) {
+    private fun obtenerUrlManga(mangaID: String, capituloID: String) {
         db.collection("Manga")
             .document(mangaID)
             .collection("Capitulos")
-            .document(numCapitulo)
+            .document(capituloID)
             .get()
             .addOnSuccessListener { document ->
                 val mangaUrl = document.getString("capituloURL")
