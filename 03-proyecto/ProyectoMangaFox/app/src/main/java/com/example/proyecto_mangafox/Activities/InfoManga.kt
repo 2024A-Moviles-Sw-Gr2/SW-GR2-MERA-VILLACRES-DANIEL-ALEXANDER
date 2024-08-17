@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.proyecto_mangafox.Activities.RecyclerViews.InterfaceOnClick
+import com.example.proyecto_mangafox.Activities.RecyclerViews.RVAdapterBiblioteca
 import com.example.proyecto_mangafox.Activities.RecyclerViews.RVAdapterExplorar
 import com.example.proyecto_mangafox.Activities.RecyclerViews.RVAdapterInfoManga
 import com.example.proyecto_mangafox.R
@@ -21,6 +22,8 @@ import com.google.firebase.firestore.firestore
 
 class InfoManga : AppCompatActivity(), InterfaceOnClick.ItemClickListener {
 
+    private lateinit var adapterInfoManga: RVAdapterInfoManga
+    val listaCapituloID = mutableListOf<String>()
     val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,10 +40,35 @@ class InfoManga : AppCompatActivity(), InterfaceOnClick.ItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-        // Llama a la función para cambiar de actividad
-        when (position) {
-            0 -> irActividad(LeerManga::class.java)
+        intent.getStringExtra("mangaID")?.let {
+            db.collection("Manga")
+                .document(it)
+                .collection("Capitulos")
+                .get()
+                .addOnSuccessListener { result ->
+
+                    for (document in result){
+                        if(document.id == listaCapituloID[position]){
+                            val mangaID = intent.getStringExtra("mangaID")
+                            val capituloID = document.id
+                            val numCapitulo = document.get("numCapitulos").toString()
+
+                            if (mangaID != null) {
+                                irActividadLeerManga(LeerManga::class.java, mangaID, capituloID, numCapitulo)
+                            }
+                        }
+                    }
+
+                }
         }
+    }
+
+    private fun irActividadLeerManga(clase: Class<*>, mangaID: String, capituloID: String, numCapitulo: String) {
+        val intent = Intent(this, clase)
+        intent.putExtra("mangaID", mangaID)
+        intent.putExtra("capituloID", capituloID)
+        intent.putExtra("numCapitulo", numCapitulo)
+        startActivity(intent)
     }
 
     fun llenarDatosManga(mangaID: String){
@@ -93,6 +121,7 @@ class InfoManga : AppCompatActivity(), InterfaceOnClick.ItemClickListener {
                     val tituloCapitulo = "Capítulo " + document.get("numCap") + ": " + document.get("tituloCapitulo").toString()
                     val fechaCapitulo = document.get("fechaPublicacion").toString()
                     val numPaginas = "Pág. " + document.get("numPaginas").toString()
+                    listaCapituloID.add(document.id)
 
                     sectionList.add(listOf(tituloCapitulo, fechaCapitulo, numPaginas))
                 }
@@ -110,7 +139,8 @@ class InfoManga : AppCompatActivity(), InterfaceOnClick.ItemClickListener {
 
         val recyclerView: RecyclerView = findViewById(R.id.rv_capitulos)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = RVAdapterInfoManga(this, sectionList)
+        adapterInfoManga = RVAdapterInfoManga(this, sectionList)
+        recyclerView.adapter = adapterInfoManga
     }
 
     fun irActividad(

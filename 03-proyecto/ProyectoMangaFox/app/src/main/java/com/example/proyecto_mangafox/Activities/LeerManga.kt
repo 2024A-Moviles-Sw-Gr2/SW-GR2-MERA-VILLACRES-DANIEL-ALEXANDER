@@ -26,10 +26,15 @@ class LeerManga : AppCompatActivity() {
 
         pdfView = findViewById(R.id.pdfView)
 
-        val mangaID = "JujutsuKaisen"
-        val numCapitulo = "JK01"
+        //val mangaID = "JujutsuKaisen"
+        //val numCapitulo = "JK01"
+        val mangaID = intent.getStringExtra("mangaID")
+        val capituloID = intent.getStringExtra("capituloID")
+        val numCapitulo = intent.getStringExtra("numCapitulo")
         //obtenerInfoCapitulo(mangaID, numCapitulo)
-        obtenerUrlManga(mangaID, numCapitulo)
+        if (mangaID != null && capituloID != null) {
+            obtenerUrlManga(mangaID, capituloID)
+        }
     }
 
     /*private fun obtenerInfoCapitulo(mangaID: String, numCapitulo: String): Pair<String, String> {

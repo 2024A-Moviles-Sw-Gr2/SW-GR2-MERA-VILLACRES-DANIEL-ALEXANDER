@@ -9,7 +9,7 @@ import com.example.proyecto_mangafox.R
 
 class RVAdapterInfoManga(
     private val itemClickListener: InterfaceOnClick.ItemClickListener,
-    private val contenido: List<List<String>>
+    val contenido: List<List<String>>
 ) : RecyclerView.Adapter<RVAdapterInfoManga.SectionViewHolder>() {
 
     inner class SectionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
