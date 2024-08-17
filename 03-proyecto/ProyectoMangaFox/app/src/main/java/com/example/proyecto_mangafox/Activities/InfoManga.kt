@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Im
 import android.util.Log
 import android.view.View
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -38,9 +39,9 @@ class InfoManga : AppCompatActivity(), InterfaceOnClick.ItemClickListener {
 
         val imgGuardarBiblioteca = findViewById<ImageView>(R.id.iv_guardar_infomanga)
         val txtGuardarBiblioteca = findViewById<TextView>(R.id.tv_guardar_infomanga)
+        val botonRegresar = findViewById<ImageButton>(R.id.ib_regresar_infomanga)
 
         val mangaID = intent.getStringExtra("mangaID")
-        //val mangaID = "JujutsuKaisen"
         if (mangaID != null) {
             inicializarRecyclerView(mangaID)
             llenarDatosManga(mangaID)
@@ -89,6 +90,10 @@ class InfoManga : AppCompatActivity(), InterfaceOnClick.ItemClickListener {
                 }
 
             }
+        }
+
+        botonRegresar.setOnClickListener {
+            finish()
         }
     }
     suspend fun searchManga(mangaID: String): Boolean {

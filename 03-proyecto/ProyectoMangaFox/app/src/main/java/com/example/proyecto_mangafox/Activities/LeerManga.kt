@@ -2,6 +2,7 @@ package com.example.proyecto_mangafox.Activities
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyecto_mangafox.R
@@ -28,6 +29,7 @@ class LeerManga : AppCompatActivity() {
         pdfView = findViewById(R.id.pdfView)
         val nombreManga = findViewById<TextView>(R.id.tv_nombre_manga_leermanga)
         val nombreCapitulo = findViewById<TextView>(R.id.tv_nombre_capitulo_leermanga)
+        val botonRegresar = findViewById<ImageButton>(R.id.ib_regresar_leermanga)
 
         val mangaID = intent.getStringExtra("mangaID")
         val capituloID = intent.getStringExtra("capituloID")
@@ -35,8 +37,13 @@ class LeerManga : AppCompatActivity() {
         if (mangaID != null && capituloID != null) {
             obtenerTituloManga(mangaID, nombreManga)
             obtenerNombreCapitulo(mangaID, capituloID, nombreCapitulo)
-            obtenerUrlManga(mangaID, capituloID)
+            leerManga(mangaID, capituloID)
         }
+
+        botonRegresar.setOnClickListener {
+            finish()
+        }
+
     }
 
     private fun obtenerTituloManga(mangaID: String, textView: TextView) {
@@ -70,7 +77,7 @@ class LeerManga : AppCompatActivity() {
             }
     }
 
-    private fun obtenerUrlManga(mangaID: String, capituloID: String) {
+    private fun leerManga(mangaID: String, capituloID: String) {
         db.collection("Manga")
             .document(mangaID)
             .collection("Capitulos")
@@ -80,19 +87,19 @@ class LeerManga : AppCompatActivity() {
                 val mangaUrl = document.getString("capituloURL")
                 if (!mangaUrl.isNullOrEmpty()) {
                     Log.d("LinkManga", "Link del manga: $mangaUrl")
-                    downloadAndDisplayPdf(mangaUrl)
+                    mostrarManga(mangaUrl)
                 } else {
                     Log.d("LinkManga", "URL del manga no encontrada, cargando URL por defecto.")
-                    downloadAndDisplayPdf(defaultPdfUrl)
+                    mostrarManga(defaultPdfUrl)
                 }
             }
             .addOnFailureListener { exception ->
                 Log.d("LinkManga", "Error al obtener el link del manga: ", exception)
-                downloadAndDisplayPdf(defaultPdfUrl)
+                mostrarManga(defaultPdfUrl)
             }
     }
 
-    private fun downloadAndDisplayPdf(pdfUrl: String) {
+    private fun mostrarManga(pdfUrl: String) {
         thread {
             try {
                 val client = OkHttpClient()

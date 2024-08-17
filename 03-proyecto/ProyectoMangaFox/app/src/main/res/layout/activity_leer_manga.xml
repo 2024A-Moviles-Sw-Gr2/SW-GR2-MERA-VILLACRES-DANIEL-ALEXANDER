@@ -21,38 +21,33 @@
             style="@style/titulo1_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="One Piece"
+            android:text="Nombre Manga"
             android:textColor="@color/secundario"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_regresar_leermanga"
+            app:layout_constraintStart_toEndOf="@+id/ib_regresar_leermanga"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.35" />
-
-        <ImageView
-            android:id="@+id/iv_regresar_leermanga"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="btn_regresar"
-            android:padding="0dp"
-            android:scaleType="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_regresar" />
+            app:layout_constraintVertical_bias="0.166" />
 
         <TextView
             android:id="@+id/tv_nombre_capitulo_leermanga"
             style="@style/normal2_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Capítulo 1: Amanecer de la aventura"
+            android:text="Nombre capítulo"
             android:textColor="@color/gris_azulado"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_regresar_leermanga"
+            app:layout_constraintStart_toStartOf="@+id/tv_nombre_manga_leermanga"
             app:layout_constraintTop_toBottomOf="@+id/tv_nombre_manga_leermanga"
             app:layout_constraintVertical_bias="0.0" />
+
+        <ImageButton
+            android:id="@+id/ib_regresar_leermanga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_regresar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
