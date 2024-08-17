@@ -1,8 +1,6 @@
 package com.example.proyecto_mangafox.Activities
 
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -16,10 +14,6 @@ import com.example.proyecto_mangafox.Activities.RecyclerViews.RVAdapterExplorar
 import com.example.proyecto_mangafox.R
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.ktx.storage
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class ExplorarFragment : Fragment(), InterfaceOnClick.ItemClickListener {
 
@@ -46,10 +40,9 @@ class ExplorarFragment : Fragment(), InterfaceOnClick.ItemClickListener {
                     Log.d("Manga", "${document.id} => ${document.get("titulo")}")
                     // Obtiene el título y el URL de la portada del manga
                     val tituloManga = document.get("titulo").toString()
-                    val mangaID = tituloManga.replace(" ", "")
                     val portadaMangaURL = document.get("portadaURL").toString()
 
-                    sectionList.add(listOf(tituloManga, mangaID) to portadaMangaURL)
+                    sectionList.add(listOf(tituloManga, document.id) to portadaMangaURL)
                 }
 
                 // Configura el adaptador del RecyclerView después de haber llenado la lista
