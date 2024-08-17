@@ -5,7 +5,8 @@
     android:id="@+id/cl_fragment_biblioteca"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.BibliotecaFragment">
+    tools:context=".Activities.BibliotecaFragment"
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/tv_bilbioteca"

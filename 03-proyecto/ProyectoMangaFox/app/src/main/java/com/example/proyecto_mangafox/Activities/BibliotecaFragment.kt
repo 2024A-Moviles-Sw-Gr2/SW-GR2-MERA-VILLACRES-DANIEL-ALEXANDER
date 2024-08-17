@@ -21,6 +21,7 @@ class BibliotecaFragment : Fragment(), InterfaceOnClick.ItemClickListener {
     private lateinit var adapterBiblioteca: RVAdapterBiblioteca
     val db = Firebase.firestore
     val listaMangas = mutableListOf<String>()
+    var currentUserId = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +33,7 @@ class BibliotecaFragment : Fragment(), InterfaceOnClick.ItemClickListener {
 
         val recyclerView: RecyclerView = view.findViewById(R.id.rv_biblioteca)
 
-        val currentUserId = arguments?.getString("username") ?: "Mataso97"
+        currentUserId = arguments?.getString("username") ?: "Mataso97"
 
         db.collection("Usuario").document(currentUserId)
             .collection("MiBiblioteca")
@@ -77,6 +78,7 @@ class BibliotecaFragment : Fragment(), InterfaceOnClick.ItemClickListener {
     private fun irActividad(clase: Class<*>, mangaTitulo: String) {
         val intent = Intent(activity, clase)
         intent.putExtra("mangaID", mangaTitulo)
+        intent.putExtra("username", currentUserId)
         startActivity(intent)
     }
 

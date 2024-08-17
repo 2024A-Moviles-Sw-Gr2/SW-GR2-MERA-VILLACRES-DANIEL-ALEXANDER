@@ -19,6 +19,7 @@ class ExplorarFragment : Fragment(), InterfaceOnClick.ItemClickListener {
 
     private lateinit var adapterExplorar: RVAdapterExplorar
     val db = Firebase.firestore
+    var currentUserId = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +32,8 @@ class ExplorarFragment : Fragment(), InterfaceOnClick.ItemClickListener {
 
         // Configura el RecyclerView
         val recyclerView: RecyclerView = view.findViewById(R.id.rv_explorar)
+
+        currentUserId = arguments?.getString("username") ?: "Mataso97"
 
         // Obtiene la colección "Manga" de Firestore
         db.collection("Manga")
@@ -71,6 +74,7 @@ class ExplorarFragment : Fragment(), InterfaceOnClick.ItemClickListener {
     private fun irActividad(clase: Class<*>, mangaTitulo: String) {
         val intent = Intent(activity, clase)
         intent.putExtra("mangaID", mangaTitulo)
+        intent.putExtra("username", currentUserId)
         startActivity(intent)
     }
 

@@ -18,22 +18,27 @@ class MainActivity : AppCompatActivity() {
 
         // Detectar botones del menu inferior y cambiar los fragmentos
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
+            val username = intent.getStringExtra("username")
+            val bundle = Bundle()
+            bundle.putString("username", username)
+
             when (item.itemId) {
                 R.id.mi_biblioteca -> {
-                    val username = intent.getStringExtra("username")
                     val fragment = BibliotecaFragment()
-                    val bundle = Bundle()
-                    bundle.putString("username", username)
                     fragment.arguments = bundle
                     loadFragment(fragment)
                     true
                 }
                 R.id.mi_explorar -> {
-                    loadFragment(ExplorarFragment())
+                    val fragment = ExplorarFragment()
+                    fragment.arguments = bundle
+                    loadFragment(fragment)
                     true
                 }
                 R.id.mi_cuenta -> {
-                    loadFragment(CuentaFragment())
+                    val fragment = CuentaFragment()
+                    fragment.arguments = bundle
+                    loadFragment(fragment)
                     true
                 }
                 else -> false

@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.CuentaFragment"
+    android:background="@color/white"
     >
 
     <TextView
+        android:id="@+id/tv_nombre_cuenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hola, George Quishpe"
@@ -29,100 +31,132 @@
         android:layout_width="141dp"
         android:layout_height="30dp"
         android:layout_gravity="start"
-        android:onClick="btn_ajustes"
         android:layout_marginStart="30dp"
         android:layout_marginTop="250dp"
         android:paddingEnd="21dp">
 
-        <ImageButton
-            android:id="@+id/ib_ajustes"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_gravity="start|center_vertical"
-            android:background="@color/white"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_rueda_config"
-            app:tint="@color/azul_marino"
+    <ImageButton
+        android:id="@+id/ib_ajustes"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="start|center_vertical"
+        android:background="@color/white"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_rueda_config"
+        app:tint="@color/azul_marino"
 
-            />
+        />
 
-        <TextView
-            android:id="@+id/tv_ajustes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ajustes"
-            style="@style/normal1_style"
-            android:textColor="@color/gris_azulado"
-            android:layout_gravity="center"
-            />
+    <TextView
+        android:id="@+id/tv_ajustes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ajustes"
+        style="@style/normal1_style"
+        android:textColor="@color/gris_azulado"
+        android:layout_gravity="center"
+        />
 
-    </FrameLayout>
+</FrameLayout>
+
+<FrameLayout
+    android:id="@+id/fl_acerda_de"
+    android:layout_width="141dp"
+    android:layout_height="30dp"
+    android:layout_gravity="start"
+    android:layout_marginStart="30dp"
+    android:layout_marginTop="290dp">
+
+    <ImageButton
+        android:id="@+id/ib_acerda_de"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:scaleType="fitCenter"
+        android:layout_gravity="start|center_vertical"
+        android:background="@color/white"
+        android:src="@drawable/ic_info"
+        app:tint="@color/azul_marino"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_acerda_de"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Acerca de"
+        style="@style/normal1_style"
+        android:textColor="@color/gris_azulado"
+        android:layout_gravity="center"
+        />
+
+</FrameLayout>
+
+<FrameLayout
+    android:id="@+id/fl_ayuda"
+    android:layout_width="141dp"
+    android:layout_height="30dp"
+    android:layout_gravity="start"
+    android:layout_marginStart="30dp"
+    android:layout_marginTop="330dp"
+    android:paddingEnd="25dp">
+
+    <ImageButton
+        android:id="@+id/ib_ayuda"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:scaleType="fitCenter"
+        android:layout_gravity="start|center_vertical"
+        android:background="@color/white"
+        android:src="@drawable/ic_ayuda"
+        app:tint="@color/azul_marino"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_ayuda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ayuda"
+        style="@style/normal1_style"
+        android:textColor="@color/gris_azulado"
+        android:layout_gravity="center"
+        />
+
+</FrameLayout>
 
     <FrameLayout
-        android:id="@+id/fl_acerda_de"
-        android:layout_width="141dp"
+        android:id="@+id/fl_salir"
+        android:layout_width="160dp"
         android:layout_height="30dp"
         android:layout_gravity="start"
-        android:onClick="btn_acerda_de"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="290dp">
+        android:layout_marginTop="400dp"
+        android:paddingEnd="25dp"
+        >
 
         <ImageButton
-            android:id="@+id/ib_acerda_de"
+            android:id="@+id/ib_salir"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:scaleType="fitCenter"
             android:layout_gravity="start|center_vertical"
             android:background="@color/white"
-            android:src="@drawable/ic_info"
+            android:src="@drawable/ic_regresar"
             app:tint="@color/azul_marino"
 
             />
 
         <TextView
-            android:id="@+id/tv_acerda_de"
+            android:id="@+id/tv_salir"
+            android:layout_marginLeft="16dp"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Acerca de"
+            android:text="Cerrar Sesión"
             style="@style/normal1_style"
             android:textColor="@color/gris_azulado"
             android:layout_gravity="center"
             />
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/fl_ayuda"
-        android:layout_width="141dp"
-        android:layout_height="30dp"
-        android:layout_gravity="start"
-        android:onClick="btn_ayuda"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="330dp"
-        android:paddingEnd="25dp">
-
-        <ImageButton
-            android:id="@+id/ib_ayuda"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:scaleType="fitCenter"
-            android:layout_gravity="start|center_vertical"
-            android:background="@color/white"
-            android:src="@drawable/ic_ayuda"
-            app:tint="@color/azul_marino"
-
-            />
-
-        <TextView
-            android:id="@+id/tv_ayuda"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ayuda"
-            style="@style/normal1_style"
-            android:textColor="@color/gris_azulado"
-            android:layout_gravity="center"
-            />
-
     </FrameLayout>
 
 </FrameLayout>

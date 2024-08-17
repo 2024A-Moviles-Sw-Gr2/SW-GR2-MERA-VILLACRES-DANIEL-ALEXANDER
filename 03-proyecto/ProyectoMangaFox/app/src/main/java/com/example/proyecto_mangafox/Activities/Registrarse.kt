@@ -22,9 +22,11 @@ class Registrarse : AppCompatActivity() {
         val botonCancelar = findViewById<Button>(R.id.btn_cancelar_registrarse)
         val username = findViewById<TextInputEditText>(R.id.et_usuario_registrarse)
         val password = findViewById<TextInputEditText>(R.id.et_contrasena_registrarse)
+        val nombre = findViewById<TextInputEditText>(R.id.et_nombre_registrarse)
+        val correo = findViewById<TextInputEditText>(R.id.et_correo_registrarse)
 
         botonRegistrarse.setOnClickListener {
-            registrarUsuario(username.text.toString(), password.text.toString())
+            registrarUsuario(username.text.toString(), password.text.toString(), nombre.text.toString(), correo.text.toString())
             irActividad(Login::class.java) }
 
         botonCancelar.setOnClickListener {
@@ -32,10 +34,12 @@ class Registrarse : AppCompatActivity() {
         }
     }
 
-    fun registrarUsuario(username: String, password: String) {
+    fun registrarUsuario(username: String, password: String, nombre: String, correo: String) {
         // Crear un mapa con los datos del usuario
         val usuario = hashMapOf(
-            "contrasenia" to password
+            "contrasenia" to password,
+            "email" to correo,
+            "nombre" to nombre
         )
 
         // Ingresar usuario a la base de datos

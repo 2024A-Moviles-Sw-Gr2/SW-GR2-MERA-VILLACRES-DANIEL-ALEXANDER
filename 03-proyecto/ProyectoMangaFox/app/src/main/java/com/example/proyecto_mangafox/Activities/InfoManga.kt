@@ -8,6 +8,7 @@ import android.provider.ContactsContract.CommonDataKinds.Im
 import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,12 +32,14 @@ class InfoManga : AppCompatActivity(), InterfaceOnClick.ItemClickListener {
     private lateinit var adapterInfoManga: RVAdapterInfoManga
     val listaCapituloID = mutableListOf<String>()
     val db = Firebase.firestore
-    val currentUserId = "Mataso97"
+    var currentUserId = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info_manga)
 
+        currentUserId = intent.getStringExtra("username") ?: "Mataso97"
+        val botonRegresar = findViewById<ImageButton>(R.id.ib_regresar_infomanga)
         val imgGuardarBiblioteca = findViewById<ImageView>(R.id.iv_guardar_infomanga)
         val txtGuardarBiblioteca = findViewById<TextView>(R.id.tv_guardar_infomanga)
         val botonLeer = findViewById<FrameLayout>(R.id.fl_leer_infomanga)
@@ -76,6 +79,10 @@ class InfoManga : AppCompatActivity(), InterfaceOnClick.ItemClickListener {
         botonLeer.setOnClickListener {
             val num = ultCap - 1
             onItemClick(num)
+        }
+
+        botonRegresar.setOnClickListener {
+            finish()
         }
     }
 
