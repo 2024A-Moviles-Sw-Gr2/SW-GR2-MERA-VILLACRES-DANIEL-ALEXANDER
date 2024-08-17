@@ -17,6 +17,7 @@ class RVAdapterBiblioteca(
     inner class SectionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nombreManga: TextView = view.findViewById(R.id.tv_nombre_manga_itmbiblioteca)
         val portada: ImageView = view.findViewById(R.id.iv_portada_itmbiblioteca)
+        val numCapitulos: TextView = view.findViewById(R.id.tv_num_paginas_itmbiblioteca)
 
         init {
             view.setOnClickListener {
@@ -36,6 +37,7 @@ class RVAdapterBiblioteca(
     override fun onBindViewHolder(holder: RVAdapterBiblioteca.SectionViewHolder, position: Int) {
         val (texto, imageUrl) = contenido[position]
         holder.nombreManga.text = texto[0]
+        holder.numCapitulos.text = texto[2]
         // Usa Glide para cargar la imagen en el ImageView
         Glide.with(holder.itemView.context)
             .load(imageUrl)

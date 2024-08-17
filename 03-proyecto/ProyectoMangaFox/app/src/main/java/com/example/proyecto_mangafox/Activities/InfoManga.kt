@@ -19,24 +19,97 @@ import com.example.proyecto_mangafox.Activities.RecyclerViews.RVAdapterInfoManga
 import com.example.proyecto_mangafox.R
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 
 class InfoManga : AppCompatActivity(), InterfaceOnClick.ItemClickListener {
 
     private lateinit var adapterInfoManga: RVAdapterInfoManga
     val listaCapituloID = mutableListOf<String>()
     val db = Firebase.firestore
+    val currentUserId = "Mataso97"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info_manga)
+
+        val imgGuardarBiblioteca = findViewById<ImageView>(R.id.iv_guardar_infomanga)
+        val txtGuardarBiblioteca = findViewById<TextView>(R.id.tv_guardar_infomanga)
 
         val mangaID = intent.getStringExtra("mangaID")
         //val mangaID = "JujutsuKaisen"
         if (mangaID != null) {
             inicializarRecyclerView(mangaID)
             llenarDatosManga(mangaID)
+
+            // Llama a la coroutine
+            CoroutineScope(Dispatchers.Main).launch {
+                val existeManga = searchManga(mangaID)
+
+                if (existeManga) {
+                    imgGuardarBiblioteca.setImageResource(R.drawable.ic_corazon_negro)
+                    txtGuardarBiblioteca.text = "En biblioteca"
+                } else {
+                    imgGuardarBiblioteca.setImageResource(R.drawable.ic_corazon_blanco)
+                    txtGuardarBiblioteca.text = "Añadir a la \n biblioteca"
+                }
+            }
         }
 
+        imgGuardarBiblioteca.setOnClickListener {
+            if(txtGuardarBiblioteca.text.equals("En biblioteca")){
+                imgGuardarBiblioteca.setImageResource(R.drawable.ic_corazon_blanco)
+                txtGuardarBiblioteca.text = "Añadir a la \n biblioteca"
+
+                // Eliminar de la coleccion MiBiblioteca
+                intent.getStringExtra("mangaID")?.let { it ->
+                    db.collection("Usuario").document(currentUserId)
+                        .collection("MiBiblioteca")
+                        .document(it)
+                        .delete()
+                }
+
+            }else{
+                imgGuardarBiblioteca.setImageResource(R.drawable.ic_corazon_negro)
+                txtGuardarBiblioteca.text = "En biblioteca"
+
+                val mangaData = hashMapOf(
+                    "ultimoCapLeido" to 1 // Valor inicial del último capítulo leído
+                )
+
+                // Guardar manga en MiBiblioteca
+                intent.getStringExtra("mangaID")?.let { it ->
+                    db.collection("Usuario").document(currentUserId)
+                        .collection("MiBiblioteca")
+                        .document(it)
+                        .set(mangaData)
+                }
+
+            }
+        }
+    }
+    suspend fun searchManga(mangaID: String): Boolean {
+        return withContext(Dispatchers.IO) {
+            try {
+                val result = db.collection("Usuario").document(currentUserId)
+                    .collection("MiBiblioteca")
+                    .get()
+                    .await()
+
+                for (document in result) {
+                    if (document.id == mangaID) {
+                        return@withContext true
+                    }
+                }
+                return@withContext false
+            } catch (e: Exception) {
+                Log.w("Firestore", "Error al buscar el manga en la biblioteca.", e)
+                return@withContext false
+            }
+        }
     }
 
     override fun onItemClick(position: Int) {
@@ -129,13 +202,6 @@ class InfoManga : AppCompatActivity(), InterfaceOnClick.ItemClickListener {
             .addOnFailureListener { exception ->
                 Log.w("FirestoreError", "Error getting documents.", exception)
             }
-
-        /*val sectionList = listOf(
-            listOf("Capítulo 1: Amanecer de la aventura", "20/10/1999", "Pág. 10"),
-            listOf("Capítulo 2: Amanecer de la aventura", "25/11/1999", "Pág. 14"),
-            listOf("Capítulo 3: Amanecer de la aventura", "12/12/1999", "Pág. 11"),
-            listOf("Capítulo 4: Amanecer de la aventura", "05/01/2000", "Pág. 17"),
-        )*/
 
         val recyclerView: RecyclerView = findViewById(R.id.rv_capitulos)
         recyclerView.layoutManager = LinearLayoutManager(this)

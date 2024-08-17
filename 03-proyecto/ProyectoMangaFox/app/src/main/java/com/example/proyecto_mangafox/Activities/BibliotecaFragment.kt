@@ -49,8 +49,9 @@ class BibliotecaFragment : Fragment(), InterfaceOnClick.ItemClickListener {
                             if (listaMangas.contains(document.id)) {
                                 val tituloManga = document.getString("titulo") ?: ""
                                 val portadaMangaURL = document.getString("portadaURL") ?: ""
+                                val numCapitulos = document.get("numCapitulos") ?: 1
 
-                                sectionList.add(listOf(tituloManga, document.id) to portadaMangaURL)
+                                sectionList.add(listOf(tituloManga, document.id, numCapitulos.toString()) to portadaMangaURL)
                             }
                         }
 
