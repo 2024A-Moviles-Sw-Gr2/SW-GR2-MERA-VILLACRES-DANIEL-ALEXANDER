@@ -23,7 +23,6 @@
         android:layout_height="25dp"
         android:layout_gravity="end|top"
         android:layout_margin="20dp"
-        android:onClick="btn_buscar"
         app:srcCompat="@drawable/ic_lupa" />
 
     <androidx.recyclerview.widget.RecyclerView

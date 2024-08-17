@@ -38,6 +38,15 @@ class InfoManga : AppCompatActivity(), InterfaceOnClick.ItemClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info_manga)
 
+        inicializar()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        inicializar()
+    }
+
+    private fun inicializar(){
         currentUserId = intent.getStringExtra("username") ?: "Mataso97"
         val botonRegresar = findViewById<ImageButton>(R.id.ib_regresar_infomanga)
         val imgGuardarBiblioteca = findViewById<ImageView>(R.id.iv_guardar_infomanga)
@@ -223,9 +232,11 @@ class InfoManga : AppCompatActivity(), InterfaceOnClick.ItemClickListener {
             }
     }
 
-    fun inicializarRecyclerView(mangaID: String){
+    fun inicializarRecyclerView(mangaID: String) {
         // Inicializa sectionList como una lista mutable
         val sectionList = mutableListOf<List<String>>()
+        val recyclerView: RecyclerView = findViewById(R.id.rv_capitulos)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         // Obtiene los capítulos del manga desde Firestore
         db.collection("Manga")
@@ -243,16 +254,13 @@ class InfoManga : AppCompatActivity(), InterfaceOnClick.ItemClickListener {
 
                     sectionList.add(listOf(tituloCapitulo, fechaCapitulo, numPaginas))
                 }
-            }
-            .addOnFailureListener { exception ->
-                Log.w("FirestoreError", "Error getting documents.", exception)
-            }
 
-        val recyclerView: RecyclerView = findViewById(R.id.rv_capitulos)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        adapterInfoManga = RVAdapterInfoManga(this, sectionList)
-        recyclerView.adapter = adapterInfoManga
+                // Ahora que los datos están cargados, configura el adapter
+                adapterInfoManga = RVAdapterInfoManga(this, sectionList)
+                recyclerView.adapter = adapterInfoManga
+            }
     }
+
 
     fun irActividad(
         clase: Class<*>
