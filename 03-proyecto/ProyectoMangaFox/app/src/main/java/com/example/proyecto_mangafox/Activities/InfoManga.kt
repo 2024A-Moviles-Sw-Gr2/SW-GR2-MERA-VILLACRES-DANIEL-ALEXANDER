@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Im
 import android.util.Log
 import android.view.View
-import android.widget.ImageButton
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,63 +39,90 @@ class InfoManga : AppCompatActivity(), InterfaceOnClick.ItemClickListener {
 
         val imgGuardarBiblioteca = findViewById<ImageView>(R.id.iv_guardar_infomanga)
         val txtGuardarBiblioteca = findViewById<TextView>(R.id.tv_guardar_infomanga)
-        val botonRegresar = findViewById<ImageButton>(R.id.ib_regresar_infomanga)
+        val botonLeer = findViewById<FrameLayout>(R.id.fl_leer_infomanga)
+        val txtBotonLeer = findViewById<TextView>(R.id.tv_leer_infomanga)
+        var ultCap = 1
 
         val mangaID = intent.getStringExtra("mangaID")
+        //val mangaID = "JujutsuKaisen"
         if (mangaID != null) {
             inicializarRecyclerView(mangaID)
             llenarDatosManga(mangaID)
-
             // Llama a la coroutine
             CoroutineScope(Dispatchers.Main).launch {
                 val existeManga = searchManga(mangaID)
 
                 if (existeManga) {
+                    ultCap = getUltimoCapLeido(mangaID)
                     imgGuardarBiblioteca.setImageResource(R.drawable.ic_corazon_negro)
                     txtGuardarBiblioteca.text = "En biblioteca"
+                    if(ultCap == 1){
+                        txtBotonLeer.text = "Empezar"
+                    }else{
+                        txtBotonLeer.text = "Continuar"
+                    }
                 } else {
                     imgGuardarBiblioteca.setImageResource(R.drawable.ic_corazon_blanco)
                     txtGuardarBiblioteca.text = "Añadir a la \n biblioteca"
+                    txtBotonLeer.text = "Empezar"
                 }
             }
         }
 
         imgGuardarBiblioteca.setOnClickListener {
-            if(txtGuardarBiblioteca.text.equals("En biblioteca")){
-                imgGuardarBiblioteca.setImageResource(R.drawable.ic_corazon_blanco)
-                txtGuardarBiblioteca.text = "Añadir a la \n biblioteca"
-
-                // Eliminar de la coleccion MiBiblioteca
-                intent.getStringExtra("mangaID")?.let { it ->
-                    db.collection("Usuario").document(currentUserId)
-                        .collection("MiBiblioteca")
-                        .document(it)
-                        .delete()
-                }
-
-            }else{
-                imgGuardarBiblioteca.setImageResource(R.drawable.ic_corazon_negro)
-                txtGuardarBiblioteca.text = "En biblioteca"
-
-                val mangaData = hashMapOf(
-                    "ultimoCapLeido" to 1 // Valor inicial del último capítulo leído
-                )
-
-                // Guardar manga en MiBiblioteca
-                intent.getStringExtra("mangaID")?.let { it ->
-                    db.collection("Usuario").document(currentUserId)
-                        .collection("MiBiblioteca")
-                        .document(it)
-                        .set(mangaData)
-                }
-
-            }
+            guardarEnBiblioteca(imgGuardarBiblioteca, txtGuardarBiblioteca)
         }
 
-        botonRegresar.setOnClickListener {
-            finish()
+        botonLeer.setOnClickListener {
+            val num = ultCap - 1
+            onItemClick(num)
         }
     }
+
+    suspend fun getUltimoCapLeido(mangaID: String): Int {
+        return withContext(Dispatchers.IO) {
+            val result = db.collection("Usuario").document(currentUserId)
+                .collection("MiBiblioteca")
+                .document(mangaID)
+                .get()
+                .await()
+            result.getLong("ultimoCapLeido")?.toInt() ?: 1
+        }
+    }
+
+
+    fun guardarEnBiblioteca(imgGuardarBiblioteca: ImageView, txtGuardarBiblioteca: TextView){
+        if(txtGuardarBiblioteca.text.equals("En biblioteca")){
+            imgGuardarBiblioteca.setImageResource(R.drawable.ic_corazon_blanco)
+            txtGuardarBiblioteca.text = "Añadir a la \n biblioteca"
+
+            // Eliminar de la coleccion MiBiblioteca
+            intent.getStringExtra("mangaID")?.let { it ->
+                db.collection("Usuario").document(currentUserId)
+                    .collection("MiBiblioteca")
+                    .document(it)
+                    .delete()
+            }
+
+        }else{
+            imgGuardarBiblioteca.setImageResource(R.drawable.ic_corazon_negro)
+            txtGuardarBiblioteca.text = "En biblioteca"
+
+            val mangaData = hashMapOf(
+                "ultimoCapLeido" to 1 // Valor inicial del último capítulo leído
+            )
+
+            // Guardar manga en MiBiblioteca
+            intent.getStringExtra("mangaID")?.let { it ->
+                db.collection("Usuario").document(currentUserId)
+                    .collection("MiBiblioteca")
+                    .document(it)
+                    .set(mangaData)
+            }
+
+        }
+    }
+
     suspend fun searchManga(mangaID: String): Boolean {
         return withContext(Dispatchers.IO) {
             try {
@@ -119,6 +146,12 @@ class InfoManga : AppCompatActivity(), InterfaceOnClick.ItemClickListener {
 
     override fun onItemClick(position: Int) {
         intent.getStringExtra("mangaID")?.let {
+            val ultCap = position + 1
+            db.collection("Usuario").document(currentUserId)
+                .collection("MiBiblioteca")
+                .document(it)
+                .update("ultimoCapLeido", ultCap)
+
             db.collection("Manga")
                 .document(it)
                 .collection("Capitulos")

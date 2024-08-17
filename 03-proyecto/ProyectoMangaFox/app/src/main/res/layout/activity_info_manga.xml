@@ -215,7 +215,7 @@ conocido como 'One Piece' estaba escondido en algún lugar dentro del vasto océ
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageButton
-            android:id="@+id/ib_ajustes_infomanga"
+            android:id="@+id/ib_leer_infomanga"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="start|center_vertical"
@@ -227,7 +227,7 @@ conocido como 'One Piece' estaba escondido en algún lugar dentro del vasto océ
             />
 
         <TextView
-            android:id="@+id/tv_ajustes_infomanga"
+            android:id="@+id/tv_leer_infomanga"
             style="@style/placeholder_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
