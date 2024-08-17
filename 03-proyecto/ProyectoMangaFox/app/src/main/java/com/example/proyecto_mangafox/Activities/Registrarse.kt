@@ -4,16 +4,52 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import com.example.proyecto_mangafox.R
+import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 
 class Registrarse : AppCompatActivity() {
+
+    val db = Firebase.firestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registrarse)
 
         val botonRegistrarse = findViewById<Button>(R.id.btn_registrarse)
-        botonRegistrarse.setOnClickListener { irActividad(Login::class.java) }
+        val botonCancelar = findViewById<Button>(R.id.btn_cancelar_registrarse)
+        val username = findViewById<TextInputEditText>(R.id.et_usuario_registrarse)
+        val password = findViewById<TextInputEditText>(R.id.et_contrasena_registrarse)
+
+        botonRegistrarse.setOnClickListener {
+            registrarUsuario(username.text.toString(), password.text.toString())
+            irActividad(Login::class.java) }
+
+        botonCancelar.setOnClickListener {
+            irActividad(Login::class.java)
+        }
     }
+
+    fun registrarUsuario(username: String, password: String) {
+        // Crear un mapa con los datos del usuario
+        val usuario = hashMapOf(
+            "contrasenia" to password
+        )
+
+        // Ingresar usuario a la base de datos
+        db.collection("Usuario")
+            .document(username)
+            .set(usuario)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Error al registrar usuario", Toast.LENGTH_SHORT).show()
+            }
+    }
+
 
     fun irActividad(
         clase: Class<*>
